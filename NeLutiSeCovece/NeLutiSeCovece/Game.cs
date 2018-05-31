@@ -8,19 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
+using System.Threading;
 
 namespace NeLutiSeCovece
 {
     public partial class Game : Form
-    {
-        public Game(ArrayList gameSettings)
+    {   
+        public static ArrayList gameSettings;
+        Player playerRed,playerYellow,playerGreen,playerBlue;
+
+        public Game(ArrayList gameSettingsMenu)
         {
             InitializeComponent();
+            gameSettings = gameSettingsMenu;
         }
          
         private void panelGame_Paint(object sender, PaintEventArgs e)
         {
-           
+            
             Point[] board = new Point[64];
             Point[] garageRed = new Point[4];
             Point[] garageYellow = new Point[4];
@@ -105,6 +110,7 @@ namespace NeLutiSeCovece
                 board[i] = new Point(x, y);
                 x -= 55;
             }
+
             //Garaza mesto kade sto se smesteni figurite pred da zapocne igrata
             //Garaza Red
             x = 550;
@@ -125,53 +131,127 @@ namespace NeLutiSeCovece
             x = 550;
             y = 540;
             e.Graphics.FillEllipse(Brushes.Yellow, x, y, 65, 65);
-            garageRed[0] = new Point(x, y);
+            garageYellow[0] = new Point(x, y);
             x += 80;
             e.Graphics.FillEllipse(Brushes.Yellow, x, y, 65, 65);
-            garageRed[1] = new Point(x, y);
+            garageYellow[1] = new Point(x, y);
             y += 80;
-            garageRed[2] = new Point(x, y);
+            garageYellow[2] = new Point(x, y);
             e.Graphics.FillEllipse(Brushes.Yellow, x, y, 65, 65);
             x -= 80;
-            garageRed[3] = new Point(x, y);
+            garageYellow[3] = new Point(x, y);
             e.Graphics.FillEllipse(Brushes.Yellow, x, y, 65, 65);
 
             //Garaza Green
             x = 50;
             y = 540;
             e.Graphics.FillEllipse(Brushes.Green, x, y, 65, 65);
-            garageRed[0] = new Point(x, y);
+            garageGreen[0] = new Point(x, y);
             x += 80;
             e.Graphics.FillEllipse(Brushes.Green, x, y, 65, 65);
-            garageRed[1] = new Point(x, y);
+            garageGreen[1] = new Point(x, y);
             y += 80;
-            garageRed[2] = new Point(x, y);
+            garageGreen[2] = new Point(x, y);
             e.Graphics.FillEllipse(Brushes.Green, x, y, 65, 65);
             x -= 80;
-            garageRed[3] = new Point(x, y);
+            garageGreen[3] = new Point(x, y);
             e.Graphics.FillEllipse(Brushes.Green, x, y, 65, 65);
 
             //Garaza Blue
             x = 50;
             y = 40;
             e.Graphics.FillEllipse(Brushes.DodgerBlue, x, y, 65, 65);
-            garageRed[0] = new Point(x, y);
+            garageBlue[0] = new Point(x, y);
             x += 80;
             e.Graphics.FillEllipse(Brushes.DodgerBlue, x, y, 65, 65);
-            garageRed[1] = new Point(x, y);
+            garageBlue[1] = new Point(x, y);
             y += 80;
-            garageRed[2] = new Point(x, y);
+            garageBlue[2] = new Point(x, y);
             e.Graphics.FillEllipse(Brushes.DodgerBlue, x, y, 65, 65);
             x -= 80;
-            garageRed[3] = new Point(x, y);
+            garageBlue[3] = new Point(x, y);
             e.Graphics.FillEllipse(Brushes.DodgerBlue, x, y, 65, 65);
 
             //Vertinkalna linija
             e.Graphics.DrawLine(blackPen, new Point(800, 0), new Point(800, 780));
-            //button1.Location = new Point(board[1].X + 15 , board[1].Y + 5);
 
+            // Polnenje na garazhite
+            if (Convert.ToBoolean(gameSettings[0]))
+                fillGarageRed(garageRed, "red");
+
+            if (Convert.ToBoolean(gameSettings[1]))
+                fillGarageYellow(garageYellow, "yellow");
+
+            if (Convert.ToBoolean(gameSettings[2]))
+                fillGarageGreen(garageGreen, "green");
+
+            if (Convert.ToBoolean(gameSettings[3]))
+                fillGarageBlue(garageBlue, "blue");
         }
-        
+
+        // Funkcija za kreiranje igraci i polnenje na garazite
+        public void fillGarageRed(Point[] garage, String boja)
+        {
+            Button[] btnRed = new Button[4];
+            for (int i = 0; i < 4; i++)
+            {
+                btnRed[i] = new Button();
+            }
+            playerRed = new Player(btnRed);
+            for (int i = 0; i < 4; i++)
+            {
+                this.Controls.Add(playerRed.figures[i]);
+            }
+            playerRed.setStartingPosition(garage, boja);
+        }
+
+        public void fillGarageYellow(Point[] garage, String boja)
+        {
+            Button[] btnYellow = new Button[4];
+            for (int i = 0; i < 4; i++)
+            {
+                btnYellow[i] = new Button();
+            }
+            playerYellow = new Player(btnYellow);
+            for (int i = 0; i < 4; i++)
+            {
+                this.Controls.Add(playerYellow.figures[i]);
+            }
+            playerYellow.setStartingPosition(garage, boja);
+        }
+
+        public void fillGarageGreen(Point[] garage, String boja)
+        {
+            Button[] btnGreen = new Button[4];
+            for (int i = 0; i < 4; i++)
+            {
+                btnGreen[i] = new Button();
+            }
+            playerGreen = new Player(btnGreen);
+            for (int i = 0; i < 4; i++)
+            {
+                this.Controls.Add(playerGreen.figures[i]);
+            }
+            playerGreen.setStartingPosition(garage, boja);
+        }
+
+        public void fillGarageBlue(Point[] garage, String boja)
+        {
+            Button[] btnBlue = new Button[4];
+            for (int i = 0; i < 4; i++)
+            {
+                btnBlue[i] = new Button();
+            }
+            playerBlue = new Player(btnBlue);
+            for (int i = 0; i < 4; i++)
+            {
+                this.Controls.Add(playerBlue.figures[i]);
+            }
+            playerBlue.setStartingPosition(garage, boja);
+        }
+
+       
+
         Boolean kockaStartFlag = true;
         private void buttonKocka_Click(object sender, EventArgs e)
         {
@@ -219,5 +299,11 @@ namespace NeLutiSeCovece
                     break;
             }
         }
+        //Gasenje
+        private void Game_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(1);
+        }
     }
+    
 }

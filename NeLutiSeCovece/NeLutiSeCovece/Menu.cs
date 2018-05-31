@@ -62,10 +62,10 @@ namespace NeLutiSeCovece
         // Prenesuvanje na argumeti za igracite vo glavnata strana
         private void btnStart_Click(object sender, EventArgs e)
         {
-            bool redChecked = cbRed.Checked;
-            bool yellowChecked = cbYellow.Checked;
-            bool greenChecked = cbGreen.Checked;
-            bool blueChecked = cbBlue.Checked;
+            Boolean redChecked = cbRed.Checked;
+            Boolean yellowChecked = cbYellow.Checked;
+            Boolean greenChecked = cbGreen.Checked;
+            Boolean blueChecked = cbBlue.Checked;
 
             ArrayList gameSettings = new ArrayList();
             gameSettings.Add(redChecked);

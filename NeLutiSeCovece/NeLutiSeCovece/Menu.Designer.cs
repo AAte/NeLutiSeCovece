@@ -217,7 +217,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::NeLutiSeCovece.Properties.Resources.drvo_bg;
-            this.ClientSize = new System.Drawing.Size(442, 693);
+            this.ClientSize = new System.Drawing.Size(434, 691);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.pictureBox4);
@@ -232,6 +232,9 @@
             this.Controls.Add(this.cbYellow);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbRed);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(450, 730);
+            this.MinimumSize = new System.Drawing.Size(450, 730);
             this.Name = "Menu";
             this.Text = "i";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

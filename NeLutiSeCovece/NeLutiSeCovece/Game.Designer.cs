@@ -77,7 +77,7 @@
             this.buttonKocka.UseVisualStyleBackColor = false;
             this.buttonKocka.Click += new System.EventHandler(this.buttonKocka_Click);
             // 
-            // Form1
+            // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -86,8 +86,9 @@
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1180, 780);
             this.MinimumSize = new System.Drawing.Size(1180, 780);
-            this.Name = "Form1";
+            this.Name = "Game";
             this.Text = "Mapa";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Game_FormClosed);
             this.panelGame.ResumeLayout(false);
             this.panelGame.PerformLayout();
             this.ResumeLayout(false);
