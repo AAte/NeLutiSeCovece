@@ -16,6 +16,12 @@ namespace NeLutiSeCovece
     {   
         public static ArrayList gameSettings;
         Player playerRed,playerYellow,playerGreen,playerBlue;
+        Point[] board = new Point[64];
+        Point[] garageRed = new Point[4];
+        Point[] garageYellow = new Point[4];
+        Point[] garageBlue = new Point[4];
+        Point[] garageGreen = new Point[4];
+        Pen blackPen = new Pen(Color.Black, 3);
 
         public Game(ArrayList gameSettingsMenu)
         {
@@ -25,16 +31,28 @@ namespace NeLutiSeCovece
          
         private void panelGame_Paint(object sender, PaintEventArgs e)
         {
-            
-            Point[] board = new Point[64];
-            Point[] garageRed = new Point[4];
-            Point[] garageYellow = new Point[4];
-            Point[] garageBlue = new Point[4];
-            Point[] garageGreen = new Point[4];
+            //Crtane na mapata i postavuvavena na koordinati za patekata
+            drawMap(e);
+         
+            //Vertinkalna linija
+            e.Graphics.DrawLine(blackPen, new Point(800, 0), new Point(800, 780));
 
-            Pen blackPen = new Pen(Color.Black, 3);                  
+            // Polnenje na garazhite
+            if (Convert.ToBoolean(gameSettings[0]))
+                fillGarageRed(garageRed, "red");
 
-            int x = 400, y = 10; //   pocetni koordinati
+            if (Convert.ToBoolean(gameSettings[1]))
+                fillGarageYellow(garageYellow, "yellow");
+
+            if (Convert.ToBoolean(gameSettings[2]))
+                fillGarageGreen(garageGreen, "green");
+
+            if (Convert.ToBoolean(gameSettings[3]))
+                fillGarageBlue(garageBlue, "blue");
+        }
+
+        public void drawMap(PaintEventArgs e) {
+            int x = 400, y = 10; //pocetni koordinati
             for (int i = 0; i < 48; i++)
             {
                 // Popolnuvanje na polinjata
@@ -172,23 +190,7 @@ namespace NeLutiSeCovece
             garageBlue[3] = new Point(x, y);
             e.Graphics.FillEllipse(Brushes.DodgerBlue, x, y, 65, 65);
 
-            //Vertinkalna linija
-            e.Graphics.DrawLine(blackPen, new Point(800, 0), new Point(800, 780));
-
-            // Polnenje na garazhite
-            if (Convert.ToBoolean(gameSettings[0]))
-                fillGarageRed(garageRed, "red");
-
-            if (Convert.ToBoolean(gameSettings[1]))
-                fillGarageYellow(garageYellow, "yellow");
-
-            if (Convert.ToBoolean(gameSettings[2]))
-                fillGarageGreen(garageGreen, "green");
-
-            if (Convert.ToBoolean(gameSettings[3]))
-                fillGarageBlue(garageBlue, "blue");
         }
-
         // Funkcija za kreiranje igraci i polnenje na garazite
         public void fillGarageRed(Point[] garage, String boja)
         {

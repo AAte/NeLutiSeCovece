@@ -28,6 +28,11 @@ namespace NeLutiSeCovece
                 figures[i].Height = 50;
                 figures[i].Width = 30;
                 figures[i].BringToFront();
+                figures[i].FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                figures[i].FlatAppearance.BorderSize = 0;
+                figures[i].FlatAppearance.MouseDownBackColor = Color.Transparent;
+                figures[i].FlatAppearance.MouseOverBackColor = Color.Transparent;
+                figures[i].BackColor = Color.Transparent;
 
                 switch (boja)
                 {
