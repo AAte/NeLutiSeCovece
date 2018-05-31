@@ -42,9 +42,9 @@ namespace NeLutiSeCovece
                     y -= 50 + 5;
 
                 e.Graphics.DrawEllipse(blackPen, x, y, 50, 50);
-                board[i] = new Point(x, y);
+                board[i] = new Point(x, y); // zacuvuvane na pozicijata na sekoe pole
 
-                // Obojuvanje na pocetnite polinja
+                // Obojuvanje na pocetnite polinja i postavuvane na nivnite pocetni pozicii
                 if (i == 0)
                 {
                     e.Graphics.FillEllipse(Brushes.Red, x, y, 50, 50);
@@ -66,7 +66,7 @@ namespace NeLutiSeCovece
                     board[i] = new Point(x, y);
                 }
             }
-
+            // base e krajnata lokacijata kaj sto treba da stigne igracot
             // base Red
             y = 65;
             for (int i = 48; i <= 51; i++)
@@ -104,7 +104,7 @@ namespace NeLutiSeCovece
                 board[i] = new Point(x, y);
                 x -= 55;
             }
-
+            //Garaza mesto kade sto se smesteni figurite pred da zapocne igrata
             //Garaza Red
             x = 550;
             y = 40;
@@ -165,12 +165,12 @@ namespace NeLutiSeCovece
             garageRed[3] = new Point(x, y);
             e.Graphics.FillEllipse(Brushes.DodgerBlue, x, y, 65, 65);
 
-            //Vertinkalna linija 
+            //Vertinkalna linija
             e.Graphics.DrawLine(blackPen, new Point(800, 0), new Point(800, 780));
             button1.Location = new Point(board[1].X + 15 , board[1].Y + 5);
 
         }
-
+        
         Boolean kockaStartFlag = true;
         private void buttonKocka_Click(object sender, EventArgs e)
         {
@@ -186,41 +186,39 @@ namespace NeLutiSeCovece
                 kockaStartFlag = true;
             }  
         }
-
+        //Animirana kocka
         private void timerKocka_Tick(object sender, EventArgs e)
         {
             Random r = new Random();
             int broj = r.Next(1, 7);
-            if (broj == 1)
-            {
-                buttonKocka.BackgroundImage = NeLutiSeCovece.Properties.Resources.kocka_1;
-                buttonKocka.BackgroundImageLayout = ImageLayout.Stretch;
+            switch (broj) {
+                case 1:
+                    buttonKocka.BackgroundImage = NeLutiSeCovece.Properties.Resources.kocka_1;
+                    buttonKocka.BackgroundImageLayout = ImageLayout.Stretch;
+                    break;
+                case 2:
+                    buttonKocka.BackgroundImage = NeLutiSeCovece.Properties.Resources.kocka_2;
+                    buttonKocka.BackgroundImageLayout = ImageLayout.Stretch;
+                    break;
+                case 3:
+                    buttonKocka.BackgroundImage = NeLutiSeCovece.Properties.Resources.kocka_3;
+                    buttonKocka.BackgroundImageLayout = ImageLayout.Stretch;
+                    break;
+                case 4:
+                    buttonKocka.BackgroundImage = NeLutiSeCovece.Properties.Resources.kocka_4;
+                    buttonKocka.BackgroundImageLayout = ImageLayout.Stretch;
+                    break;
+                case 5:
+                    buttonKocka.BackgroundImage = NeLutiSeCovece.Properties.Resources.kocka_5;
+                    buttonKocka.BackgroundImageLayout = ImageLayout.Stretch;
+                    break;
+                case 6:
+                    buttonKocka.BackgroundImage = NeLutiSeCovece.Properties.Resources.kocka_6;
+                    buttonKocka.BackgroundImageLayout = ImageLayout.Stretch;
+                    break;
+
             }
-            else if (broj == 2)
-            {
-                buttonKocka.BackgroundImage = NeLutiSeCovece.Properties.Resources.kocka_2;
-                buttonKocka.BackgroundImageLayout = ImageLayout.Stretch;
-            }
-            else if (broj == 3)
-            {
-                buttonKocka.BackgroundImage = NeLutiSeCovece.Properties.Resources.kocka_3;
-                buttonKocka.BackgroundImageLayout = ImageLayout.Stretch;
-            }
-            else if (broj == 4)
-            {
-                buttonKocka.BackgroundImage = NeLutiSeCovece.Properties.Resources.kocka_4;
-                buttonKocka.BackgroundImageLayout = ImageLayout.Stretch;
-            }
-            else if (broj == 5)
-            {
-                buttonKocka.BackgroundImage = NeLutiSeCovece.Properties.Resources.kocka_5;
-                buttonKocka.BackgroundImageLayout = ImageLayout.Stretch;
-            }
-            else if (broj == 6)
-            {
-                buttonKocka.BackgroundImage = NeLutiSeCovece.Properties.Resources.kocka_6;
-                buttonKocka.BackgroundImageLayout = ImageLayout.Stretch;
-            }
+       
         }
     }
 }
