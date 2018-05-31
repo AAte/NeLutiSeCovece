@@ -18,7 +18,7 @@ namespace NeLutiSeCovece
             InitializeComponent();
         }
 
-        // 
+        // Proverka za selektirani igraci
         private void cbRed_CheckedChanged(object sender, EventArgs e)
         {
             if (cbRed.Checked == false && cbYellow.Checked == false && cbGreen.Checked == false && cbBlue.Checked == false)
@@ -58,8 +58,8 @@ namespace NeLutiSeCovece
             else
                 btnStart.Enabled = true;
         }
-        
 
+        // Prenesuvanje na argumeti za igracite vo glavnata strana
         private void btnStart_Click(object sender, EventArgs e)
         {
             bool redChecked = cbRed.Checked;
