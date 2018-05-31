@@ -7,17 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace NeLutiSeCovece
 {
-    public partial class Form1 : Form
+    public partial class Game : Form
     {
-        public Form1()
+        public Game(ArrayList gameSettings)
         {
             InitializeComponent();
         }
          
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void panelGame_Paint(object sender, PaintEventArgs e)
         {
            
             Point[] board = new Point[64];
@@ -167,7 +168,7 @@ namespace NeLutiSeCovece
 
             //Vertinkalna linija
             e.Graphics.DrawLine(blackPen, new Point(800, 0), new Point(800, 780));
-            button1.Location = new Point(board[1].X + 15 , board[1].Y + 5);
+            //button1.Location = new Point(board[1].X + 15 , board[1].Y + 5);
 
         }
         
@@ -216,9 +217,7 @@ namespace NeLutiSeCovece
                     buttonKocka.BackgroundImage = NeLutiSeCovece.Properties.Resources.kocka_6;
                     buttonKocka.BackgroundImageLayout = ImageLayout.Stretch;
                     break;
-
             }
-       
         }
     }
 }

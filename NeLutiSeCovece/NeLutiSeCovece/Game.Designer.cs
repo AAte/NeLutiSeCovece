@@ -1,6 +1,6 @@
 ﻿namespace NeLutiSeCovece
 {
-    partial class Form1
+    partial class Game
     {
         /// <summary>
         /// Required designer variable.
@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
             this.timerKocka = new System.Windows.Forms.Timer(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelGame = new System.Windows.Forms.Panel();
             this.labelRoll = new System.Windows.Forms.Label();
             this.buttonKocka = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.panelGame.SuspendLayout();
             this.SuspendLayout();
             // 
             // timerKocka
@@ -43,17 +42,16 @@
             this.timerKocka.Interval = 120;
             this.timerKocka.Tick += new System.EventHandler(this.timerKocka_Tick);
             // 
-            // panel1
+            // panelGame
             // 
-            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
-            this.panel1.Controls.Add(this.labelRoll);
-            this.panel1.Controls.Add(this.buttonKocka);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1179, 740);
-            this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panelGame.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelGame.BackgroundImage")));
+            this.panelGame.Controls.Add(this.labelRoll);
+            this.panelGame.Controls.Add(this.buttonKocka);
+            this.panelGame.Location = new System.Drawing.Point(0, 0);
+            this.panelGame.Name = "panelGame";
+            this.panelGame.Size = new System.Drawing.Size(1180, 740);
+            this.panelGame.TabIndex = 0;
+            this.panelGame.Paint += new System.Windows.Forms.PaintEventHandler(this.panelGame_Paint);
             // 
             // labelRoll
             // 
@@ -79,37 +77,26 @@
             this.buttonKocka.UseVisualStyleBackColor = false;
             this.buttonKocka.Click += new System.EventHandler(this.buttonKocka_Click);
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(231, 122);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(20, 40);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1164, 741);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelGame);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1180, 780);
             this.MinimumSize = new System.Drawing.Size(1180, 780);
             this.Name = "Form1";
             this.Text = "Mapa";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelGame.ResumeLayout(false);
+            this.panelGame.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panelGame;
         private System.Windows.Forms.Timer timerKocka;
         private System.Windows.Forms.Button buttonKocka;
         private System.Windows.Forms.Label labelRoll;
