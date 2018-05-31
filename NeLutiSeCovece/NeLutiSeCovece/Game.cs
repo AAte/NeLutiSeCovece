@@ -84,7 +84,7 @@ namespace NeLutiSeCovece
 
             // base Green
             y += 165;
-            for (int i = 48; i <= 51; i++)
+            for (int i = 52; i <= 55; i++)
             {
                 e.Graphics.FillEllipse(Brushes.Green, x, y, 50, 50);
                 board[i] = new Point(x, y);
@@ -94,7 +94,7 @@ namespace NeLutiSeCovece
             // base Yellow
             y = 340;
             x = 455;
-            for (int i = 52; i <= 55; i++)
+            for (int i = 56; i <= 59; i++)
             {
                 e.Graphics.FillEllipse(Brushes.Yellow, x, y, 50, 50);
                 board[i] = new Point(x, y);
@@ -104,7 +104,7 @@ namespace NeLutiSeCovece
             // base LightBlue
             y = 340;
             x = 235;
-            for (int i = 52; i <= 55; i++)
+            for (int i = 60; i <= 63; i++)
             {
                 e.Graphics.FillEllipse(Brushes.DodgerBlue, x, y, 50, 50);
                 board[i] = new Point(x, y);
