@@ -28,7 +28,7 @@ namespace NeLutiSeCovece
 
             Pen blackPen = new Pen(Color.Black, 3);                  
 
-            int x = 400, y = 10; // pocetni koordinati
+            int x = 400, y = 10; //   pocetni koordinati
             for (int i = 0; i < 48; i++)
             {
                 // Popolnuvanje na polinjata
