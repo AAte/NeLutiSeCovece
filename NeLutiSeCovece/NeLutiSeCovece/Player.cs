@@ -50,12 +50,11 @@ namespace NeLutiSeCovece
                 figures[i].Visible = true;
                 figures[i].FlatAppearance.BorderSize = 0;
             }
-           
         }
         
-        //Funkcija za pridvizuvane na pionite
+        //Funkcija za pridvizuvanje na pionite
         public bool moveFigure(int kocka,int figureNum) {
-            if (kocka == 6 && active[figureNum] == false)
+            if (kocka == 6 && active[figureNum] == false && !startTaken(figureNum))
             {
                 active[figureNum] = true;
                 figures[figureNum].Location = board[pathBoard[0]];
@@ -63,16 +62,45 @@ namespace NeLutiSeCovece
             }
             else if (active[figureNum])
             {
-                if (positionBoard[figureNum] + kocka <= 51)
+                if (positionBoard[figureNum] + kocka <= 51 && !figuresOverlap(kocka, figureNum))
                 {
                     positionBoard[figureNum] += kocka;
                     figures[figureNum].Location = board[pathBoard[positionBoard[figureNum]]];
                     return true;
-                }
-                
+                }  
             }
             return false;
-            
+        }
+
+        // Funkcija sto ne dozvoluva dva piona so ista boja da se naogaat zaedno na startot
+        private bool startTaken(int figureNum)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (i == figureNum)
+                    continue;
+
+                if (positionBoard[i]==0 && active[i])
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Funkcija sto ne dozvoluva dva piona so ista boja da se naogaat zaedno
+        private bool figuresOverlap(int kocka,int figureNum)
+        {
+            for(int i = 0; i < 4; i++)
+            {
+                if (i == figureNum)
+                    continue;
+
+                if (positionBoard[figureNum] + kocka == positionBoard[i]) {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

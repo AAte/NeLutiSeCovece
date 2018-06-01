@@ -31,10 +31,10 @@ namespace NeLutiSeCovece
                                          26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51 };
 
         int[] playerYellowpath = new int[52] { 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 
-                                         36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 52, 53, 54, 55 };
+                                         36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 56, 57, 58, 59 };
 
         int[] playerGreenpath = new int[52] { 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 
-                                         0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 56, 57, 58, 59 };
+                                         0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 52, 53, 54, 55 };
 
         int[] playerBluepath = new int[52] { 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 
                                          14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 60, 61, 62, 63 };
@@ -74,10 +74,6 @@ namespace NeLutiSeCovece
             entryFlag = false;
         }
 
-        private void Game_Paint(object sender, PaintEventArgs e)
-        {
-           
-        }
 
         public void drawMap(PaintEventArgs e)
         {
@@ -131,32 +127,32 @@ namespace NeLutiSeCovece
             }
 
             // base Green
-            y += 165;
+            y += 330;
             for (int i = 52; i <= 55; i++)
             {
                 e.Graphics.FillEllipse(Brushes.Green, x, y, 50, 50);
                 board[i] = new Point(x, y);
-                y += 55;
+                y -= 55;
             }
 
             // base Yellow
             y = 340;
-            x = 455;
+            x = 620;
             for (int i = 56; i <= 59; i++)
             {
                 e.Graphics.FillEllipse(Brushes.Yellow, x, y, 50, 50);
                 board[i] = new Point(x, y);
-                x += 55;
+                x -= 55;
             }
 
-            // base LightBlue
+            // base Blue
             y = 340;
-            x = 235;
+            x = 70;
             for (int i = 60; i <= 63; i++)
             {
                 e.Graphics.FillEllipse(Brushes.DodgerBlue, x, y, 50, 50);
                 board[i] = new Point(x, y);
-                x -= 55;
+                x += 55;
             }
 
             //Garaza mesto kade sto se smesteni figurite pred da zapocne igrata
@@ -263,29 +259,114 @@ namespace NeLutiSeCovece
             btnBlue[1] = btnBlue1;
             btnBlue[2] = btnBlue2;
             btnBlue[3] = btnBlue3;
-            playerBlue = new Player(btnBlue,playerRedpath,board);
+            playerBlue = new Player(btnBlue,playerBluepath,board);
             playerBlue.setStartingPosition(garage, boja);
         }
 
         Boolean kockaStartFlag = true;
-        
+
+        // Nastani za pridvizuvanje na kopcinjata
+        // Red
         private void btnRed0_Click(object sender, EventArgs e)
         {
             if(playerRed.moveFigure(kocka, 0))
-            {
                 kocka = 0;
-            }
             
         }
-
+        
         private void btnRed1_Click(object sender, EventArgs e)
         {
             if (playerRed.moveFigure(kocka, 1))
-            {
                 kocka = 0;
-            }
         }
 
+        private void btnRed2_Click(object sender, EventArgs e)
+        {
+            if (playerRed.moveFigure(kocka, 2))
+                kocka = 0;
+        }
+
+        private void btnRed3_Click(object sender, EventArgs e)
+        {
+            if (playerRed.moveFigure(kocka, 3))
+                kocka = 0;
+        }
+
+        // Yellow
+        private void btnYellow0_Click(object sender, EventArgs e)
+        {
+            if (playerYellow.moveFigure(kocka, 0))
+                kocka = 0;
+        }
+
+        private void btnYellow1_Click(object sender, EventArgs e)
+        {
+            if (playerYellow.moveFigure(kocka, 1))
+                kocka = 0;
+        }
+
+        private void btnYellow2_Click(object sender, EventArgs e)
+        {
+            if (playerYellow.moveFigure(kocka, 2))
+                kocka = 0;
+        }
+
+        private void btnYellow3_Click(object sender, EventArgs e)
+        {
+            if (playerYellow.moveFigure(kocka, 3))
+                kocka = 0;
+        }
+
+        // Green
+        private void btnGreen0_Click(object sender, EventArgs e)
+        {
+            if (playerGreen.moveFigure(kocka, 0))
+                kocka = 0;
+        }
+
+        private void btnGreen1_Click(object sender, EventArgs e)
+        {
+            if (playerGreen.moveFigure(kocka, 1))
+                kocka = 0;
+        }
+
+        private void btnGreen2_Click(object sender, EventArgs e)
+        {
+            if (playerGreen.moveFigure(kocka, 2))
+                kocka = 0;
+        }
+
+        private void btnGreen3_Click(object sender, EventArgs e)
+        {
+            if (playerGreen.moveFigure(kocka, 3))
+                kocka = 0;
+        }
+
+        // Blue
+        private void btnBlue0_Click(object sender, EventArgs e)
+        {
+            if (playerBlue.moveFigure(kocka, 0))
+                kocka = 0;
+        }
+
+        private void btnBlue1_Click(object sender, EventArgs e)
+        {
+            if (playerBlue.moveFigure(kocka, 1))
+                kocka = 0;
+        }
+
+        private void btnBlue2_Click(object sender, EventArgs e)
+        {
+            if (playerBlue.moveFigure(kocka, 2))
+                kocka = 0;
+        }
+
+        private void btnBlue3_Click(object sender, EventArgs e)
+        {
+            if (playerBlue.moveFigure(kocka, 3))
+                kocka = 0;
+        }
+        
         private void buttonKocka_Click(object sender, EventArgs e)
         {
             if (kockaStartFlag)

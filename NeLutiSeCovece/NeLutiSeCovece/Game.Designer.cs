@@ -149,6 +149,7 @@
             this.btnRed2.TabIndex = 5;
             this.btnRed2.UseVisualStyleBackColor = false;
             this.btnRed2.Visible = false;
+            this.btnRed2.Click += new System.EventHandler(this.btnRed2_Click);
             // 
             // btnRed3
             // 
@@ -162,6 +163,7 @@
             this.btnRed3.TabIndex = 6;
             this.btnRed3.UseVisualStyleBackColor = false;
             this.btnRed3.Visible = false;
+            this.btnRed3.Click += new System.EventHandler(this.btnRed3_Click);
             // 
             // btnYellow0
             // 
@@ -175,6 +177,7 @@
             this.btnYellow0.TabIndex = 7;
             this.btnYellow0.UseVisualStyleBackColor = false;
             this.btnYellow0.Visible = false;
+            this.btnYellow0.Click += new System.EventHandler(this.btnYellow0_Click);
             // 
             // btnYellow1
             // 
@@ -188,6 +191,7 @@
             this.btnYellow1.TabIndex = 8;
             this.btnYellow1.UseVisualStyleBackColor = false;
             this.btnYellow1.Visible = false;
+            this.btnYellow1.Click += new System.EventHandler(this.btnYellow1_Click);
             // 
             // btnYellow2
             // 
@@ -201,6 +205,7 @@
             this.btnYellow2.TabIndex = 9;
             this.btnYellow2.UseVisualStyleBackColor = false;
             this.btnYellow2.Visible = false;
+            this.btnYellow2.Click += new System.EventHandler(this.btnYellow2_Click);
             // 
             // btnYellow3
             // 
@@ -214,6 +219,7 @@
             this.btnYellow3.TabIndex = 10;
             this.btnYellow3.UseVisualStyleBackColor = false;
             this.btnYellow3.Visible = false;
+            this.btnYellow3.Click += new System.EventHandler(this.btnYellow3_Click);
             // 
             // btnGreen0
             // 
@@ -227,6 +233,7 @@
             this.btnGreen0.TabIndex = 11;
             this.btnGreen0.UseVisualStyleBackColor = false;
             this.btnGreen0.Visible = false;
+            this.btnGreen0.Click += new System.EventHandler(this.btnGreen0_Click);
             // 
             // btnGreen1
             // 
@@ -240,6 +247,7 @@
             this.btnGreen1.TabIndex = 12;
             this.btnGreen1.UseVisualStyleBackColor = false;
             this.btnGreen1.Visible = false;
+            this.btnGreen1.Click += new System.EventHandler(this.btnGreen1_Click);
             // 
             // btnGreen2
             // 
@@ -253,6 +261,7 @@
             this.btnGreen2.TabIndex = 13;
             this.btnGreen2.UseVisualStyleBackColor = false;
             this.btnGreen2.Visible = false;
+            this.btnGreen2.Click += new System.EventHandler(this.btnGreen2_Click);
             // 
             // btnGreen3
             // 
@@ -266,6 +275,7 @@
             this.btnGreen3.TabIndex = 14;
             this.btnGreen3.UseVisualStyleBackColor = false;
             this.btnGreen3.Visible = false;
+            this.btnGreen3.Click += new System.EventHandler(this.btnGreen3_Click);
             // 
             // btnBlue0
             // 
@@ -279,6 +289,7 @@
             this.btnBlue0.TabIndex = 15;
             this.btnBlue0.UseVisualStyleBackColor = false;
             this.btnBlue0.Visible = false;
+            this.btnBlue0.Click += new System.EventHandler(this.btnBlue0_Click);
             // 
             // btnBlue1
             // 
@@ -292,6 +303,7 @@
             this.btnBlue1.TabIndex = 16;
             this.btnBlue1.UseVisualStyleBackColor = false;
             this.btnBlue1.Visible = false;
+            this.btnBlue1.Click += new System.EventHandler(this.btnBlue1_Click);
             // 
             // btnBlue2
             // 
@@ -305,6 +317,7 @@
             this.btnBlue2.TabIndex = 17;
             this.btnBlue2.UseVisualStyleBackColor = false;
             this.btnBlue2.Visible = false;
+            this.btnBlue2.Click += new System.EventHandler(this.btnBlue2_Click);
             // 
             // btnBlue3
             // 
@@ -318,6 +331,7 @@
             this.btnBlue3.TabIndex = 18;
             this.btnBlue3.UseVisualStyleBackColor = false;
             this.btnBlue3.Visible = false;
+            this.btnBlue3.Click += new System.EventHandler(this.btnBlue3_Click);
             // 
             // Game
             // 
@@ -331,7 +345,6 @@
             this.Name = "Game";
             this.Text = "Mapa";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Game_FormClosed);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Game_Paint);
             this.panelGame.ResumeLayout(false);
             this.panelGame.PerformLayout();
             this.ResumeLayout(false);
