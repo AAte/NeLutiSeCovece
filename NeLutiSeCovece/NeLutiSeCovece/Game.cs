@@ -15,7 +15,9 @@ namespace NeLutiSeCovece
     public partial class Game : Form
     {   
         public static ArrayList gameSettings;
-        Player playerRed,playerYellow,playerGreen,playerBlue;
+
+        Player playerRed, playerYellow, playerGreen, playerBlue;
+
         Point[] board = new Point[64];
         Point[] garageRed = new Point[4];
         Point[] garageYellow = new Point[4];
@@ -23,22 +25,39 @@ namespace NeLutiSeCovece
         Point[] garageGreen = new Point[4];
         Pen blackPen = new Pen(Color.Black, 3);
 
+        int kocka;
+
+        int[] playerRedpath = new int[52] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 
+                                         26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51 };
+
+        int[] playerYellowpath = new int[52] { 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 
+                                         36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 52, 53, 54, 55 };
+
+        int[] playerGreenpath = new int[52] { 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 
+                                         0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 56, 57, 58, 59 };
+
+        int[] playerBluepath = new int[52] { 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 
+                                         14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 60, 61, 62, 63 };
+       
         public Game(ArrayList gameSettingsMenu)
         {
             InitializeComponent();
             gameSettings = gameSettingsMenu;
         }
-         
+
+        public bool entryFlag = true;
+
         private void panelGame_Paint(object sender, PaintEventArgs e)
         {
             //Crtane na mapata i postavuvavena na koordinati za patekata
             drawMap(e);
-           
-            
+
             //Vertinkalna linija
             e.Graphics.DrawLine(blackPen, new Point(800, 0), new Point(800, 780));
 
-            // Polnenje na garazhite
+            if (entryFlag)
+            {
+                // Polnenje na garazhite
             if (Convert.ToBoolean(gameSettings[0]))
                 fillGarageRed(garageRed, "red");
 
@@ -50,10 +69,20 @@ namespace NeLutiSeCovece
 
             if (Convert.ToBoolean(gameSettings[3]))
                 fillGarageBlue(garageBlue, "blue");
+            }
+
+            entryFlag = false;
         }
 
-        public void drawMap(PaintEventArgs e) {
-            int x = 400, y = 10; //pocetni koordinati
+        private void Game_Paint(object sender, PaintEventArgs e)
+        {
+           
+        }
+
+        public void drawMap(PaintEventArgs e)
+        {
+            int x = 400, y = 10;            //pocetni koordinati
+
             for (int i = 0; i < 48; i++)
             {
                 // Popolnuvanje na polinjata
@@ -67,9 +96,9 @@ namespace NeLutiSeCovece
                     y -= 50 + 5;
 
                 e.Graphics.DrawEllipse(blackPen, x, y, 50, 50);
-                board[i] = new Point(x, y); // zacuvuvane na pozicijata na sekoe pole
+                board[i] = new Point(x, y);             // zacuvuvanje na pozicijata na sekoe pole
 
-                // Obojuvanje na pocetnite polinja i postavuvane na nivnite pocetni pozicii
+                // Obojuvanje na pocetnite polinja i postavuvanje na nivnite pocetni pozicii
                 if (i == 0)
                 {
                     e.Graphics.FillEllipse(Brushes.Red, x, y, 50, 50);
@@ -192,6 +221,7 @@ namespace NeLutiSeCovece
             e.Graphics.FillEllipse(Brushes.DodgerBlue, x, y, 65, 65);
 
         }
+
         // Funkcija za kreiranje igraci i polnenje na garazite
         public void fillGarageRed(Point[] garage, String boja)
         {
@@ -200,7 +230,7 @@ namespace NeLutiSeCovece
             btnRed[1] = btnRed1;
             btnRed[2] = btnRed2;
             btnRed[3] = btnRed3;
-            playerRed = new Player(btnRed);
+            playerRed = new Player(btnRed,playerRedpath,board);
             playerRed.setStartingPosition(garage, boja);
         }
 
@@ -211,7 +241,7 @@ namespace NeLutiSeCovece
             btnYellow[1] = btnYellow1;
             btnYellow[2] = btnYellow2;
             btnYellow[3] = btnYellow3;
-            playerYellow = new Player(btnYellow);
+            playerYellow = new Player(btnYellow,playerYellowpath,board);
             playerYellow.setStartingPosition(garage, boja);       
         }
 
@@ -222,7 +252,7 @@ namespace NeLutiSeCovece
             btnGreen[1] = btnGreen1;
             btnGreen[2] = btnGreen2;
             btnGreen[3] = btnGreen3;
-            playerGreen = new Player(btnGreen);
+            playerGreen = new Player(btnGreen,playerGreenpath,board);
             playerGreen.setStartingPosition(garage, boja);
         }
 
@@ -233,15 +263,28 @@ namespace NeLutiSeCovece
             btnBlue[1] = btnBlue1;
             btnBlue[2] = btnBlue2;
             btnBlue[3] = btnBlue3;
-            playerBlue = new Player(btnBlue);
+            playerBlue = new Player(btnBlue,playerRedpath,board);
             playerBlue.setStartingPosition(garage, boja);
         }
 
-       
-
         Boolean kockaStartFlag = true;
+        
+        private void btnRed0_Click(object sender, EventArgs e)
+        {
+            if(playerRed.moveFigure(kocka, 0))
+            {
+                kocka = 0;
+            }
+            
+        }
 
-    
+        private void btnRed1_Click(object sender, EventArgs e)
+        {
+            if (playerRed.moveFigure(kocka, 1))
+            {
+                kocka = 0;
+            }
+        }
 
         private void buttonKocka_Click(object sender, EventArgs e)
         {
@@ -257,11 +300,13 @@ namespace NeLutiSeCovece
                 kockaStartFlag = true;
             }  
         }
+
         //Animirana kocka
         private void timerKocka_Tick(object sender, EventArgs e)
         {
             Random r = new Random();
             int broj = r.Next(1, 7);
+            kocka = broj;
             switch (broj) {
                 case 1:
                     buttonKocka.BackgroundImage = NeLutiSeCovece.Properties.Resources.kocka_1;
@@ -288,6 +333,7 @@ namespace NeLutiSeCovece
                     buttonKocka.BackgroundImageLayout = ImageLayout.Stretch;
                     break;
             }
+
         }
         //Gasenje
         private void Game_FormClosed(object sender, FormClosedEventArgs e)

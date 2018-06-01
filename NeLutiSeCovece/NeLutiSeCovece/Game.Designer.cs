@@ -32,8 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
             this.timerKocka = new System.Windows.Forms.Timer(this.components);
             this.panelGame = new System.Windows.Forms.Panel();
-            this.labelRoll = new System.Windows.Forms.Label();
             this.buttonKocka = new System.Windows.Forms.Button();
+            this.labelRoll = new System.Windows.Forms.Label();
             this.btnRed0 = new System.Windows.Forms.Button();
             this.btnRed1 = new System.Windows.Forms.Button();
             this.btnRed2 = new System.Windows.Forms.Button();
@@ -79,23 +79,11 @@
             this.panelGame.Controls.Add(this.btnRed0);
             this.panelGame.Controls.Add(this.labelRoll);
             this.panelGame.Controls.Add(this.buttonKocka);
-            this.panelGame.Location = new System.Drawing.Point(0, 0);
+            this.panelGame.Location = new System.Drawing.Point(-4, -1);
             this.panelGame.Name = "panelGame";
-            this.panelGame.Size = new System.Drawing.Size(1180, 740);
+            this.panelGame.Size = new System.Drawing.Size(1169, 744);
             this.panelGame.TabIndex = 0;
             this.panelGame.Paint += new System.Windows.Forms.PaintEventHandler(this.panelGame_Paint);
-            // 
-            // labelRoll
-            // 
-            this.labelRoll.AutoSize = true;
-            this.labelRoll.BackColor = System.Drawing.Color.Transparent;
-            this.labelRoll.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRoll.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.labelRoll.Location = new System.Drawing.Point(922, 272);
-            this.labelRoll.Name = "labelRoll";
-            this.labelRoll.Size = new System.Drawing.Size(134, 26);
-            this.labelRoll.TabIndex = 2;
-            this.labelRoll.Text = "Click to Roll!";
             // 
             // buttonKocka
             // 
@@ -109,10 +97,22 @@
             this.buttonKocka.UseVisualStyleBackColor = false;
             this.buttonKocka.Click += new System.EventHandler(this.buttonKocka_Click);
             // 
+            // labelRoll
+            // 
+            this.labelRoll.AutoSize = true;
+            this.labelRoll.BackColor = System.Drawing.Color.Transparent;
+            this.labelRoll.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRoll.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.labelRoll.Location = new System.Drawing.Point(922, 272);
+            this.labelRoll.Name = "labelRoll";
+            this.labelRoll.Size = new System.Drawing.Size(134, 26);
+            this.labelRoll.TabIndex = 2;
+            this.labelRoll.Text = "Click to Roll!";
+            // 
             // btnRed0
             // 
             this.btnRed0.BackColor = System.Drawing.Color.Transparent;
-            this.btnRed0.BackgroundImage = global::NeLutiSeCovece.Properties.Resources.pion_red;
+            this.btnRed0.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRed0.BackgroundImage")));
             this.btnRed0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRed0.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRed0.Location = new System.Drawing.Point(998, 413);
@@ -121,6 +121,7 @@
             this.btnRed0.TabIndex = 3;
             this.btnRed0.UseVisualStyleBackColor = false;
             this.btnRed0.Visible = false;
+            this.btnRed0.Click += new System.EventHandler(this.btnRed0_Click);
             // 
             // btnRed1
             // 
@@ -134,6 +135,7 @@
             this.btnRed1.TabIndex = 4;
             this.btnRed1.UseVisualStyleBackColor = false;
             this.btnRed1.Visible = false;
+            this.btnRed1.Click += new System.EventHandler(this.btnRed1_Click);
             // 
             // btnRed2
             // 
@@ -164,7 +166,7 @@
             // btnYellow0
             // 
             this.btnYellow0.BackColor = System.Drawing.Color.Transparent;
-            this.btnYellow0.BackgroundImage = global::NeLutiSeCovece.Properties.Resources.pion_yellow;
+            this.btnYellow0.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnYellow0.BackgroundImage")));
             this.btnYellow0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnYellow0.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnYellow0.Location = new System.Drawing.Point(998, 491);
@@ -216,7 +218,7 @@
             // btnGreen0
             // 
             this.btnGreen0.BackColor = System.Drawing.Color.Transparent;
-            this.btnGreen0.BackgroundImage = global::NeLutiSeCovece.Properties.Resources.pion_green;
+            this.btnGreen0.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGreen0.BackgroundImage")));
             this.btnGreen0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnGreen0.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnGreen0.Location = new System.Drawing.Point(998, 569);
@@ -268,7 +270,7 @@
             // btnBlue0
             // 
             this.btnBlue0.BackColor = System.Drawing.Color.Transparent;
-            this.btnBlue0.BackgroundImage = global::NeLutiSeCovece.Properties.Resources.pion_blue;
+            this.btnBlue0.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBlue0.BackgroundImage")));
             this.btnBlue0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBlue0.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBlue0.Location = new System.Drawing.Point(998, 647);
@@ -329,6 +331,7 @@
             this.Name = "Game";
             this.Text = "Mapa";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Game_FormClosed);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Game_Paint);
             this.panelGame.ResumeLayout(false);
             this.panelGame.PerformLayout();
             this.ResumeLayout(false);
@@ -336,15 +339,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panelGame;
         private System.Windows.Forms.Timer timerKocka;
-        private System.Windows.Forms.Button buttonKocka;
-        private System.Windows.Forms.Label labelRoll;
-        private System.Windows.Forms.Button btnRed3;
-        private System.Windows.Forms.Button btnRed2;
-        private System.Windows.Forms.Button btnRed1;
-        private System.Windows.Forms.Button btnRed0;
+        private System.Windows.Forms.Panel panelGame;
         private System.Windows.Forms.Button btnBlue3;
         private System.Windows.Forms.Button btnBlue2;
         private System.Windows.Forms.Button btnBlue1;
@@ -357,6 +353,12 @@
         private System.Windows.Forms.Button btnYellow2;
         private System.Windows.Forms.Button btnYellow1;
         private System.Windows.Forms.Button btnYellow0;
+        private System.Windows.Forms.Button btnRed3;
+        private System.Windows.Forms.Button btnRed2;
+        private System.Windows.Forms.Button btnRed1;
+        private System.Windows.Forms.Button btnRed0;
+        private System.Windows.Forms.Label labelRoll;
+        private System.Windows.Forms.Button buttonKocka;
     }
 }
 
