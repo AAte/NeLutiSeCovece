@@ -11,28 +11,34 @@ namespace NeLutiSeCovece
     class Player : UserControl
     {
 
-        public Button[] figures { get; set; }
-        public int[] pathBoard { get; set; }
-        public int[] positionBoard { get; set; }
-        public Boolean[] active { get; set; }
-        Point[] board { get; set; }
-       
+        public Button[] figures { get; set; }           // vkupno 4 figuri
+        public int[] pathBoard { get; set; }            // vkupno 52 polinja - patekata po koja se dvizi sekoj igrac poedinecno - 48 zaednicki polinja + 4 polinja od bazata
+        public int[] positionBoard { get; set; }        // niza od 4 polina koja gi cuva poziciite na sekoja figura vo pathBoard
+        public Boolean[] active { get; set; }           // niza od 4 polina koja pokazuva koja figura e izlezena od garazata
+        Point[] board { get; set; }                     // vkupno 64 polinja --- site polinja na mapata
+        Point[] garages { get; set; }                   // vkupno 4 garazi za sekoj igrac
 
-        public Player(Button[] figures, int[]path, Point[] board)
+        public Player(Button[] figures, int[]path, Point[] board, Point[] garages)
         {
+            
             this.active = new Boolean[4];
             this.figures = new Button[4];
             this.positionBoard = new int[4];
-            for(int i = 0; i < 4; i++)
+            this.garages = new Point[4];
+
+            for (int i = 0; i < 4; i++)
             {
                 this.figures[i] = figures[i];
                 positionBoard[i] = 0;
                 active[i] = false;
+                this.garages[i] = garages[i];
             }
+
             this.pathBoard = new int[52];
             for (int i = 0; i < 52; i++) {
                 this.pathBoard[i] = path[i];
             }
+
             this.board = new Point[64];
             for (int i = 0; i < 64; i++)
             {
@@ -41,10 +47,10 @@ namespace NeLutiSeCovece
         }
 
         // Funkcija za stavanje na pionite vo garaza
-        public void setStartingPosition(Point[] startingPositions, String boja)
+        public void setStartingPosition()
         {
             for (int i = 0; i < 4; i++) {
-                this.figures[i].Location = new Point(startingPositions[i].X + 15, startingPositions[i].Y + 11);
+                this.figures[i].Location = new Point(garages[i].X + 15, garages[i].Y + 11);
                 figures[i].Height = 45;
                 figures[i].Width = 35;
                 figures[i].BringToFront();
@@ -102,6 +108,18 @@ namespace NeLutiSeCovece
                 }
             }
             return false;
+        }
+
+        //Funkcija za vrakjanje  na pozicijata na pionot
+        public int returnPosition(int p)
+        {
+           return this.pathBoard[positionBoard[p]];
+        }
+
+        public void returnToGarage(int figureNum) {
+            this.figures[figureNum].Location = new Point(garages[figureNum].X + 15, garages[figureNum].Y + 11);
+            this.active[figureNum] = false;
+            this.positionBoard[figureNum] = 0;
         }
     }
 }

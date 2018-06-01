@@ -17,6 +17,7 @@ namespace NeLutiSeCovece
         public static ArrayList gameSettings;
 
         Player playerRed, playerYellow, playerGreen, playerBlue;
+        Player[] playersObjects =new Player[4];
 
         Point[] board = new Point[64];
         Point[] garageRed = new Point[4];
@@ -57,18 +58,18 @@ namespace NeLutiSeCovece
 
             if (entryFlag)
             {
-                // Polnenje na garazhite
+                // Polnenje na garazhite vo odnos na izbranite igraci (checkbox-ovite) od menito
             if (Convert.ToBoolean(gameSettings[0]))
-                fillGarageRed(garageRed, "red");
+                fillGarageRed();
 
             if (Convert.ToBoolean(gameSettings[1]))
-                fillGarageYellow(garageYellow, "yellow");
+                fillGarageYellow();
 
             if (Convert.ToBoolean(gameSettings[2]))
-                fillGarageGreen(garageGreen, "green");
+                fillGarageGreen();
 
             if (Convert.ToBoolean(gameSettings[3]))
-                fillGarageBlue(garageBlue, "blue");
+                fillGarageBlue();
             }
 
             entryFlag = false;
@@ -219,48 +220,53 @@ namespace NeLutiSeCovece
         }
 
         // Funkcija za kreiranje igraci i polnenje na garazite
-        public void fillGarageRed(Point[] garage, String boja)
+        public void fillGarageRed()
         {
             Button[] btnRed = new Button[4];
             btnRed[0] = btnRed0;
             btnRed[1] = btnRed1;
             btnRed[2] = btnRed2;
             btnRed[3] = btnRed3;
-            playerRed = new Player(btnRed,playerRedpath,board);
-            playerRed.setStartingPosition(garage, boja);
+            playerRed = new Player(btnRed,playerRedpath,board,garageRed);
+            playerRed.setStartingPosition();
+            playersObjects[0] = playerRed;
         }
 
-        public void fillGarageYellow(Point[] garage, String boja)
+        public void fillGarageYellow()
         {
             Button[] btnYellow = new Button[4];
             btnYellow[0] = btnYellow0;
             btnYellow[1] = btnYellow1;
             btnYellow[2] = btnYellow2;
             btnYellow[3] = btnYellow3;
-            playerYellow = new Player(btnYellow,playerYellowpath,board);
-            playerYellow.setStartingPosition(garage, boja);       
+            playerYellow = new Player(btnYellow,playerYellowpath,board,garageYellow);
+            playerYellow.setStartingPosition();
+            playersObjects[1] = playerYellow;
+
         }
 
-        public void fillGarageGreen(Point[] garage, String boja)
+        public void fillGarageGreen()
         {
             Button[] btnGreen = new Button[4];
             btnGreen[0] = btnGreen0;
             btnGreen[1] = btnGreen1;
             btnGreen[2] = btnGreen2;
             btnGreen[3] = btnGreen3;
-            playerGreen = new Player(btnGreen,playerGreenpath,board);
-            playerGreen.setStartingPosition(garage, boja);
+            playerGreen = new Player(btnGreen,playerGreenpath,board,garageGreen);
+            playerGreen.setStartingPosition();
+            playersObjects[2] = playerGreen;
         }
 
-        public void fillGarageBlue(Point[] garage, String boja)
+        public void fillGarageBlue()
         {
             Button[] btnBlue = new Button[4];
             btnBlue[0] = btnBlue0;
             btnBlue[1] = btnBlue1;
             btnBlue[2] = btnBlue2;
             btnBlue[3] = btnBlue3;
-            playerBlue = new Player(btnBlue,playerBluepath,board);
-            playerBlue.setStartingPosition(garage, boja);
+            playerBlue = new Player(btnBlue,playerBluepath,board,garageBlue);
+            playerBlue.setStartingPosition();
+            playersObjects[3] = playerBlue;
         }
 
         Boolean kockaStartFlag = true;
@@ -270,101 +276,187 @@ namespace NeLutiSeCovece
         private void btnRed0_Click(object sender, EventArgs e)
         {
             if(playerRed.moveFigure(kocka, 0))
+            {
+                kickingPlayer(playerRed, 0);
                 kocka = 0;
-            
+            }
+
         }
         
         private void btnRed1_Click(object sender, EventArgs e)
         {
             if (playerRed.moveFigure(kocka, 1))
+            {
+                kickingPlayer(playerRed, 1);
                 kocka = 0;
+            }
         }
 
         private void btnRed2_Click(object sender, EventArgs e)
         {
             if (playerRed.moveFigure(kocka, 2))
+            {
+                kickingPlayer(playerRed, 2);
                 kocka = 0;
+            }
         }
 
         private void btnRed3_Click(object sender, EventArgs e)
         {
             if (playerRed.moveFigure(kocka, 3))
+            {
+                kickingPlayer(playerRed, 3);
                 kocka = 0;
+            }
         }
 
         // Yellow
         private void btnYellow0_Click(object sender, EventArgs e)
         {
             if (playerYellow.moveFigure(kocka, 0))
+            {
+                kickingPlayer(playerYellow, 0);
                 kocka = 0;
+            }
         }
 
         private void btnYellow1_Click(object sender, EventArgs e)
         {
             if (playerYellow.moveFigure(kocka, 1))
+            {
+                kickingPlayer(playerYellow, 1);
                 kocka = 0;
+            }
         }
 
         private void btnYellow2_Click(object sender, EventArgs e)
         {
             if (playerYellow.moveFigure(kocka, 2))
+            {
+                kickingPlayer(playerYellow, 2);
                 kocka = 0;
+            }
         }
 
         private void btnYellow3_Click(object sender, EventArgs e)
         {
             if (playerYellow.moveFigure(kocka, 3))
+            {
+                kickingPlayer(playerYellow, 3);
                 kocka = 0;
+            }
         }
 
         // Green
         private void btnGreen0_Click(object sender, EventArgs e)
         {
             if (playerGreen.moveFigure(kocka, 0))
+            {
+                kickingPlayer(playerGreen, 0);
                 kocka = 0;
+            }
         }
 
         private void btnGreen1_Click(object sender, EventArgs e)
         {
             if (playerGreen.moveFigure(kocka, 1))
+            {
+                kickingPlayer(playerGreen, 1);
                 kocka = 0;
+            }
         }
 
         private void btnGreen2_Click(object sender, EventArgs e)
         {
             if (playerGreen.moveFigure(kocka, 2))
+            {
+                kickingPlayer(playerGreen, 2);
                 kocka = 0;
+            }
         }
 
         private void btnGreen3_Click(object sender, EventArgs e)
         {
             if (playerGreen.moveFigure(kocka, 3))
+            {
+                kickingPlayer(playerGreen, 3);
                 kocka = 0;
+            }
         }
 
         // Blue
         private void btnBlue0_Click(object sender, EventArgs e)
         {
             if (playerBlue.moveFigure(kocka, 0))
+            {
+                kickingPlayer(playerBlue, 0);
                 kocka = 0;
+            }
+
         }
 
         private void btnBlue1_Click(object sender, EventArgs e)
         {
             if (playerBlue.moveFigure(kocka, 1))
+            {
+                kickingPlayer(playerBlue, 1);
                 kocka = 0;
+            }
+                
         }
 
         private void btnBlue2_Click(object sender, EventArgs e)
         {
             if (playerBlue.moveFigure(kocka, 2))
+            {
+                kickingPlayer(playerBlue, 2);
                 kocka = 0;
+            }
+                
         }
 
         private void btnBlue3_Click(object sender, EventArgs e)
         {
             if (playerBlue.moveFigure(kocka, 3))
+            {
+                kickingPlayer(playerBlue, 3);
                 kocka = 0;
+            }
+        }
+
+        private void kickingPlayer(Player kickerObj, int figNumber)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                // proverka dali se raboti za istiot igrac
+                if (kickerObj.Equals(playersObjects[i]))        
+                {
+                    continue;
+                }
+
+                // dokolku se raboti za razlicen igrac
+                if (kickerObj.returnPosition(figNumber) == playersObjects[i].returnPosition(0))
+                {
+                    playersObjects[i].returnToGarage(0);
+                    break;
+                }
+                if (kickerObj.returnPosition(figNumber) == playersObjects[i].returnPosition(1))
+                {
+                    playersObjects[i].returnToGarage(1);
+                    break;
+                }
+                if (kickerObj.returnPosition(figNumber) == playersObjects[i].returnPosition(2))
+                {
+                    playersObjects[i].returnToGarage(2);
+                    break;
+                }
+                if (kickerObj.returnPosition(figNumber) == playersObjects[i].returnPosition(3))
+                {
+                    playersObjects[i].returnToGarage(3);
+                    break;
+                }
+                
+            }
         }
         
         private void buttonKocka_Click(object sender, EventArgs e)
