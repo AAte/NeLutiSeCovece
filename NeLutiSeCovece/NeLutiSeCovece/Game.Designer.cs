@@ -91,7 +91,7 @@
             // 
             // btnNextTurn
             // 
-            this.btnNextTurn.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnNextTurn.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnNextTurn.Enabled = false;
             this.btnNextTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNextTurn.Location = new System.Drawing.Point(914, 349);
@@ -106,10 +106,10 @@
             // 
             this.lbTurn.AutoSize = true;
             this.lbTurn.BackColor = System.Drawing.Color.Transparent;
-            this.lbTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTurn.Location = new System.Drawing.Point(898, 466);
+            this.lbTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTurn.Location = new System.Drawing.Point(876, 453);
             this.lbTurn.Name = "lbTurn";
-            this.lbTurn.Size = new System.Drawing.Size(181, 39);
+            this.lbTurn.Size = new System.Drawing.Size(212, 46);
             this.lbTurn.TabIndex = 19;
             this.lbTurn.Text = "Player turn";
             // 
@@ -314,7 +314,9 @@
             this.btnRed2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRed2.BackgroundImage")));
             this.btnRed2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRed2.Enabled = false;
-            this.btnRed2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRed2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnRed2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnRed2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRed2.Location = new System.Drawing.Point(111, 23);
             this.btnRed2.Name = "btnRed2";
             this.btnRed2.Size = new System.Drawing.Size(36, 72);
@@ -329,7 +331,10 @@
             this.btnRed1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRed1.BackgroundImage")));
             this.btnRed1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRed1.Enabled = false;
-            this.btnRed1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRed1.FlatAppearance.BorderSize = 0;
+            this.btnRed1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnRed1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnRed1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRed1.Location = new System.Drawing.Point(69, 23);
             this.btnRed1.Name = "btnRed1";
             this.btnRed1.Size = new System.Drawing.Size(36, 72);
@@ -344,8 +349,12 @@
             this.btnRed0.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRed0.BackgroundImage")));
             this.btnRed0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRed0.Enabled = false;
-            this.btnRed0.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRed0.FlatAppearance.BorderSize = 0;
+            this.btnRed0.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnRed0.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnRed0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRed0.Location = new System.Drawing.Point(27, 23);
+            this.btnRed0.Margin = new System.Windows.Forms.Padding(0);
             this.btnRed0.Name = "btnRed0";
             this.btnRed0.Size = new System.Drawing.Size(36, 72);
             this.btnRed0.TabIndex = 3;

@@ -27,7 +27,7 @@ namespace NeLutiSeCovece
 
         Pen blackPen = new Pen(Color.Black, 3);
         int turnCounter = 0;
-
+        bool doubleTurn = false;
         int kocka;
 
         int[] playerRedpath = new int[52] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 
@@ -58,22 +58,8 @@ namespace NeLutiSeCovece
             //Vertinkalna linija
             e.Graphics.DrawLine(blackPen, new Point(800, 0), new Point(800, 780));
 
-            switch (turnCounter)
-            {
-                case 0:
-                    lbTurn.Text = "Red turn";
-                    break;
-                case 1:
-                    lbTurn.Text = "Yellow turn";
-                    break;
-                case 2:
-                    lbTurn.Text = "Green turn";
-                    break;
-                case 3:
-                    lbTurn.Text = "Blue turn";
-                    break;
-
-            }
+            //Pecatene koj igrac e na red
+            turnText();
 
             if (entryFlag)
             {
@@ -94,6 +80,31 @@ namespace NeLutiSeCovece
             entryFlag = false;
         }
 
+        public void turnText()
+        {
+
+            switch (turnCounter)
+            {
+                case 0:
+                    lbTurn.Text = "Red turn";
+                    lbTurn.ForeColor = Color.Red;
+                    break;
+                case 1:
+                    lbTurn.Text = "Yellow turn";
+                    lbTurn.ForeColor = Color.Yellow;
+                    break;
+                case 2:
+                    lbTurn.Text = "Green turn";
+                    lbTurn.ForeColor = Color.Green;
+                    break;
+                case 3:
+                    lbTurn.Text = "Blue turn";
+                    lbTurn.ForeColor = Color.DodgerBlue;
+                    break;
+
+            }
+
+        }
 
         public void drawMap(PaintEventArgs e)
         {
@@ -577,51 +588,79 @@ namespace NeLutiSeCovece
                     playersObjects[turnCounter].figures[3].Enabled = true;
                 }
 
-                if (kocka != 6)
+                if (kocka == 6)
+                {
+                    doubleTurn=true;
+                }
+
+                if (checkMoves(playersObjects[turnCounter]))
+                { 
+                    btnNextTurn.Enabled = false;
+                }
+                else if (kocka == 6 && checkAnyInactive(playersObjects[turnCounter]))
+                {
+                    btnNextTurn.Enabled = false;
+                }
+                else
                 {
                     btnNextTurn.Enabled = true;
                 }
 
-                if (checkAnyActive(playersObjects[turnCounter]))
-                    btnNextTurn.Enabled = false;
-
+                  
             }  
         }
 
         //Nastan pri klik na kopceto za next turn
         private void btnNextTurn_Click(object sender, EventArgs e)
         {
-            if (playersObjects[turnCounter] != null)
-            {
-                playersObjects[turnCounter].figures[0].Enabled = false;
-                playersObjects[turnCounter].figures[1].Enabled = false;
-                playersObjects[turnCounter].figures[2].Enabled = false;
-                playersObjects[turnCounter].figures[3].Enabled = false;
-            }
-            turnCounter++;
-            while (playersObjects[turnCounter] == null) {
+            if (!doubleTurn) { 
+                if (playersObjects[turnCounter] != null)
+                {
+                    playersObjects[turnCounter].figures[0].Enabled = false;
+                    playersObjects[turnCounter].figures[1].Enabled = false;
+                    playersObjects[turnCounter].figures[2].Enabled = false;
+                    playersObjects[turnCounter].figures[3].Enabled = false;
+                }
+
                 turnCounter++;
+
                 if (turnCounter >= 4)
                 {
                     turnCounter = 0;
                 }
 
-            }
-            if (turnCounter >= 4)
-            {
-                turnCounter = 0;
-            }
+                while (playersObjects[turnCounter] == null) {
+                    turnCounter++;
+                    if (turnCounter >= 4)
+                    {
+                        turnCounter = 0;
+                    }
+                }
 
+               
+            }
+            doubleTurn = false;
             buttonKocka.Enabled = true;
             btnNextTurn.Enabled = false;
         }
 
         // Proverka dali postoi nekoj igrac na mapata
-        private Boolean checkAnyActive(Player p)
+        private Boolean checkAnyInactive(Player p)
         {
             for (int i = 0; i < 4; i++)
             {
-                if (p.active[i] == true)
+                if (p.active[i] ==false)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        private Boolean checkMoves(Player p)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (p.CheckValidMoves(kocka, i) == true)
                 {
                     return true;
                 }

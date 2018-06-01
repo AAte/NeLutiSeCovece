@@ -56,6 +56,9 @@ namespace NeLutiSeCovece
                 figures[i].BringToFront();
                 figures[i].Visible = true;
                 figures[i].FlatAppearance.BorderSize = 0;
+                figures[i].FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+                figures[i].FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+                figures[i].FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             }
         }
         
