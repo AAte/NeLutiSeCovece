@@ -40,12 +40,13 @@ namespace NeLutiSeCovece
             }
         }
 
+        // Funkcija za stavanje na pionite vo garaza
         public void setStartingPosition(Point[] startingPositions, String boja)
         {
             for (int i = 0; i < 4; i++) {
-                this.figures[i].Location = new Point(startingPositions[i].X + 12, startingPositions[i].Y + 5);
-                figures[i].Height = 55;
-                figures[i].Width = 40;
+                this.figures[i].Location = new Point(startingPositions[i].X + 15, startingPositions[i].Y + 11);
+                figures[i].Height = 45;
+                figures[i].Width = 35;
                 figures[i].BringToFront();
                 figures[i].Visible = true;
                 figures[i].FlatAppearance.BorderSize = 0;
@@ -57,7 +58,7 @@ namespace NeLutiSeCovece
             if (kocka == 6 && active[figureNum] == false && !startTaken(figureNum))
             {
                 active[figureNum] = true;
-                figures[figureNum].Location = board[pathBoard[0]];
+                figures[figureNum].Location = new Point(board[pathBoard[0]].X + 8, board[pathBoard[0]].Y + 4);
                 return true;
             }
             else if (active[figureNum])
@@ -65,7 +66,7 @@ namespace NeLutiSeCovece
                 if (positionBoard[figureNum] + kocka <= 51 && !figuresOverlap(kocka, figureNum))
                 {
                     positionBoard[figureNum] += kocka;
-                    figures[figureNum].Location = board[pathBoard[positionBoard[figureNum]]];
+                    figures[figureNum].Location = new Point(board[pathBoard[positionBoard[figureNum]]].X + 8, board[pathBoard[positionBoard[figureNum]]].Y + 4);
                     return true;
                 }  
             }
