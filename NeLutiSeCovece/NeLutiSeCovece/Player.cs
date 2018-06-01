@@ -60,7 +60,7 @@ namespace NeLutiSeCovece
         }
         
         //Funkcija za pridvizuvanje na pionite
-        public bool moveFigure(int kocka,int figureNum) {
+        public bool moveFigure(int kocka, int figureNum) {
             if (kocka == 6 && active[figureNum] == false && !startTaken(figureNum))
             {
                 active[figureNum] = true;
@@ -75,6 +75,23 @@ namespace NeLutiSeCovece
                     figures[figureNum].Location = new Point(board[pathBoard[positionBoard[figureNum]]].X + 8, board[pathBoard[positionBoard[figureNum]]].Y + 4);
                     return true;
                 }  
+            }
+            return false;
+        }
+
+        // Proverka dali ima slobodni potezi (za next player kopceto)
+        public bool CheckValidMoves(int kocka, int figureNum)
+        {
+            if (kocka == 6 && active[figureNum] == false && !startTaken(figureNum))
+            {
+                return true;
+            }
+            else if (active[figureNum])
+            {
+                if (positionBoard[figureNum] + kocka <= 51 && !figuresOverlap(kocka, figureNum))
+                {
+                    return true;
+                }
             }
             return false;
         }
@@ -110,13 +127,15 @@ namespace NeLutiSeCovece
             return false;
         }
 
-        //Funkcija za vrakjanje  na pozicijata na pionot
+        //Funkcija za zemanje na pozicijata na pionot
         public int returnPosition(int p)
         {
            return this.pathBoard[positionBoard[p]];
         }
 
-        public void returnToGarage(int figureNum) {
+        // Funkcija za vrakjanje na protivnickiot pion vo garaza
+        public void returnToGarage(int figureNum)
+        {
             this.figures[figureNum].Location = new Point(garages[figureNum].X + 15, garages[figureNum].Y + 11);
             this.active[figureNum] = false;
             this.positionBoard[figureNum] = 0;

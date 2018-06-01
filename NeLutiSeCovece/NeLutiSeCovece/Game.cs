@@ -270,7 +270,7 @@ namespace NeLutiSeCovece
         }
 
         Boolean kockaStartFlag = true;
-
+        
         // Nastani za pridvizuvanje na kopcinjata
         // Red
         private void btnRed0_Click(object sender, EventArgs e)
@@ -392,7 +392,6 @@ namespace NeLutiSeCovece
                 kickingPlayer(playerBlue, 0);
                 kocka = 0;
             }
-
         }
 
         private void btnBlue1_Click(object sender, EventArgs e)
@@ -401,8 +400,7 @@ namespace NeLutiSeCovece
             {
                 kickingPlayer(playerBlue, 1);
                 kocka = 0;
-            }
-                
+            }               
         }
 
         private void btnBlue2_Click(object sender, EventArgs e)
@@ -411,8 +409,7 @@ namespace NeLutiSeCovece
             {
                 kickingPlayer(playerBlue, 2);
                 kocka = 0;
-            }
-                
+            }              
         }
 
         private void btnBlue3_Click(object sender, EventArgs e)
@@ -429,36 +426,68 @@ namespace NeLutiSeCovece
             for (int i = 0; i < 4; i++)
             {
                 // proverka dali se raboti za istiot igrac
-                if (kickerObj.Equals(playersObjects[i]))        
+                if (playersObjects[i] != null && kickerObj.Equals(playersObjects[i]))
                 {
                     continue;
                 }
 
                 // dokolku se raboti za razlicen igrac
-                if (kickerObj.returnPosition(figNumber) == playersObjects[i].returnPosition(0))
+                if (playersObjects[i] != null && kickerObj.returnPosition(figNumber) == playersObjects[i].returnPosition(0))
                 {
                     playersObjects[i].returnToGarage(0);
                     break;
                 }
-                if (kickerObj.returnPosition(figNumber) == playersObjects[i].returnPosition(1))
+                if (playersObjects[i] != null && kickerObj.returnPosition(figNumber) == playersObjects[i].returnPosition(1))
                 {
                     playersObjects[i].returnToGarage(1);
                     break;
                 }
-                if (kickerObj.returnPosition(figNumber) == playersObjects[i].returnPosition(2))
+                if (playersObjects[i] != null && kickerObj.returnPosition(figNumber) == playersObjects[i].returnPosition(2))
                 {
                     playersObjects[i].returnToGarage(2);
                     break;
                 }
-                if (kickerObj.returnPosition(figNumber) == playersObjects[i].returnPosition(3))
+                if (playersObjects[i] != null && kickerObj.returnPosition(figNumber) == playersObjects[i].returnPosition(3))
                 {
                     playersObjects[i].returnToGarage(3);
                     break;
                 }
-                
             }
         }
-        
+
+        public void playGame()
+        {
+            int i = 0;
+
+            while (true)
+            {
+                if (playersObjects[i] != null)
+                {
+                    lbTurn.Text = "Red turn";
+                    playersObjects[i].figures[0].Enabled = true;
+                    playersObjects[i].figures[1].Enabled = true;
+                    playersObjects[i].figures[2].Enabled = true;
+                    playersObjects[i].figures[3].Enabled = true;
+
+
+
+                    playersObjects[i].figures[0].Enabled = false;
+                    playersObjects[i].figures[1].Enabled = false;
+                    playersObjects[i].figures[2].Enabled = false;
+                    playersObjects[i].figures[3].Enabled = false;
+
+                }
+
+
+                i++;
+
+                // vrati go prviot igrac na poteg
+                if (i == 3)
+                    i = 0;
+            }
+
+        }
+
         private void buttonKocka_Click(object sender, EventArgs e)
         {
             if (kockaStartFlag)
