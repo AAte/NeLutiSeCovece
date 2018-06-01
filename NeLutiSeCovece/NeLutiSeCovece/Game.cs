@@ -33,7 +33,8 @@ namespace NeLutiSeCovece
         {
             //Crtane na mapata i postavuvavena na koordinati za patekata
             drawMap(e);
-         
+           
+            
             //Vertinkalna linija
             e.Graphics.DrawLine(blackPen, new Point(800, 0), new Point(800, 780));
 
@@ -195,66 +196,53 @@ namespace NeLutiSeCovece
         public void fillGarageRed(Point[] garage, String boja)
         {
             Button[] btnRed = new Button[4];
-            for (int i = 0; i < 4; i++)
-            {
-                btnRed[i] = new Button();
-            }
+            btnRed[0] = btnRed0;
+            btnRed[1] = btnRed1;
+            btnRed[2] = btnRed2;
+            btnRed[3] = btnRed3;
             playerRed = new Player(btnRed);
-            for (int i = 0; i < 4; i++)
-            {
-                this.Controls.Add(playerRed.figures[i]);
-            }
             playerRed.setStartingPosition(garage, boja);
         }
 
         public void fillGarageYellow(Point[] garage, String boja)
         {
             Button[] btnYellow = new Button[4];
-            for (int i = 0; i < 4; i++)
-            {
-                btnYellow[i] = new Button();
-            }
+            btnYellow[0] = btnYellow0;
+            btnYellow[1] = btnYellow1;
+            btnYellow[2] = btnYellow2;
+            btnYellow[3] = btnYellow3;
             playerYellow = new Player(btnYellow);
-            for (int i = 0; i < 4; i++)
-            {
-                this.Controls.Add(playerYellow.figures[i]);
-            }
-            playerYellow.setStartingPosition(garage, boja);
+            playerYellow.setStartingPosition(garage, boja);       
         }
 
         public void fillGarageGreen(Point[] garage, String boja)
         {
             Button[] btnGreen = new Button[4];
-            for (int i = 0; i < 4; i++)
-            {
-                btnGreen[i] = new Button();
-            }
+            btnGreen[0] = btnGreen0;
+            btnGreen[1] = btnGreen1;
+            btnGreen[2] = btnGreen2;
+            btnGreen[3] = btnGreen3;
             playerGreen = new Player(btnGreen);
-            for (int i = 0; i < 4; i++)
-            {
-                this.Controls.Add(playerGreen.figures[i]);
-            }
             playerGreen.setStartingPosition(garage, boja);
         }
 
         public void fillGarageBlue(Point[] garage, String boja)
         {
             Button[] btnBlue = new Button[4];
-            for (int i = 0; i < 4; i++)
-            {
-                btnBlue[i] = new Button();
-            }
+            btnBlue[0] = btnBlue0;
+            btnBlue[1] = btnBlue1;
+            btnBlue[2] = btnBlue2;
+            btnBlue[3] = btnBlue3;
             playerBlue = new Player(btnBlue);
-            for (int i = 0; i < 4; i++)
-            {
-                this.Controls.Add(playerBlue.figures[i]);
-            }
             playerBlue.setStartingPosition(garage, boja);
         }
 
        
 
         Boolean kockaStartFlag = true;
+
+    
+
         private void buttonKocka_Click(object sender, EventArgs e)
         {
             if (kockaStartFlag)
