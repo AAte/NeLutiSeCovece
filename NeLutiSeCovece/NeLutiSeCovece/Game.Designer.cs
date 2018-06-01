@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
             this.timerKocka = new System.Windows.Forms.Timer(this.components);
             this.panelGame = new System.Windows.Forms.Panel();
+            this.btnNextTurn = new System.Windows.Forms.Button();
             this.lbTurn = new System.Windows.Forms.Label();
             this.btnBlue3 = new System.Windows.Forms.Button();
             this.btnBlue2 = new System.Windows.Forms.Button();
@@ -51,7 +52,6 @@
             this.btnRed0 = new System.Windows.Forms.Button();
             this.labelRoll = new System.Windows.Forms.Label();
             this.buttonKocka = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.panelGame.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,7 +63,7 @@
             // panelGame
             // 
             this.panelGame.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelGame.BackgroundImage")));
-            this.panelGame.Controls.Add(this.button1);
+            this.panelGame.Controls.Add(this.btnNextTurn);
             this.panelGame.Controls.Add(this.lbTurn);
             this.panelGame.Controls.Add(this.btnBlue3);
             this.panelGame.Controls.Add(this.btnBlue2);
@@ -88,6 +88,19 @@
             this.panelGame.Size = new System.Drawing.Size(1169, 744);
             this.panelGame.TabIndex = 0;
             this.panelGame.Paint += new System.Windows.Forms.PaintEventHandler(this.panelGame_Paint);
+            // 
+            // btnNextTurn
+            // 
+            this.btnNextTurn.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnNextTurn.Enabled = false;
+            this.btnNextTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNextTurn.Location = new System.Drawing.Point(914, 349);
+            this.btnNextTurn.Name = "btnNextTurn";
+            this.btnNextTurn.Size = new System.Drawing.Size(151, 39);
+            this.btnNextTurn.TabIndex = 20;
+            this.btnNextTurn.Text = "Next Turn";
+            this.btnNextTurn.UseVisualStyleBackColor = false;
+            this.btnNextTurn.Click += new System.EventHandler(this.btnNextTurn_Click);
             // 
             // lbTurn
             // 
@@ -364,18 +377,6 @@
             this.buttonKocka.UseVisualStyleBackColor = false;
             this.buttonKocka.Click += new System.EventHandler(this.buttonKocka_Click);
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Enabled = false;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(914, 349);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(151, 39);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Next Turn";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -416,7 +417,7 @@
         private System.Windows.Forms.Label labelRoll;
         private System.Windows.Forms.Button buttonKocka;
         private System.Windows.Forms.Label lbTurn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnNextTurn;
     }
 }
 

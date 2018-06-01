@@ -24,7 +24,9 @@ namespace NeLutiSeCovece
         Point[] garageYellow = new Point[4];
         Point[] garageBlue = new Point[4];
         Point[] garageGreen = new Point[4];
+
         Pen blackPen = new Pen(Color.Black, 3);
+        int turnCounter = 0;
 
         int kocka;
 
@@ -55,6 +57,23 @@ namespace NeLutiSeCovece
 
             //Vertinkalna linija
             e.Graphics.DrawLine(blackPen, new Point(800, 0), new Point(800, 780));
+
+            switch (turnCounter)
+            {
+                case 0:
+                    lbTurn.Text = "Red turn";
+                    break;
+                case 1:
+                    lbTurn.Text = "Yellow turn";
+                    break;
+                case 2:
+                    lbTurn.Text = "Green turn";
+                    break;
+                case 3:
+                    lbTurn.Text = "Blue turn";
+                    break;
+
+            }
 
             if (entryFlag)
             {
@@ -279,8 +298,12 @@ namespace NeLutiSeCovece
             {
                 kickingPlayer(playerRed, 0);
                 kocka = 0;
+                btnNextTurn.Enabled = true;
             }
-
+            if (!playerRed.CheckValidMoves(kocka, 0))
+            {
+                btnNextTurn.Enabled = true;
+            }
         }
         
         private void btnRed1_Click(object sender, EventArgs e)
@@ -289,6 +312,11 @@ namespace NeLutiSeCovece
             {
                 kickingPlayer(playerRed, 1);
                 kocka = 0;
+                btnNextTurn.Enabled = true;
+            }
+            if (!playerRed.CheckValidMoves(kocka, 1))
+            {
+                btnNextTurn.Enabled = true;
             }
         }
 
@@ -298,6 +326,11 @@ namespace NeLutiSeCovece
             {
                 kickingPlayer(playerRed, 2);
                 kocka = 0;
+                btnNextTurn.Enabled = true;
+            }
+            if (!playerRed.CheckValidMoves(kocka, 2))
+            {
+                btnNextTurn.Enabled = true;
             }
         }
 
@@ -307,6 +340,11 @@ namespace NeLutiSeCovece
             {
                 kickingPlayer(playerRed, 3);
                 kocka = 0;
+                btnNextTurn.Enabled = true;
+            }
+            if (!playerRed.CheckValidMoves(kocka, 3))
+            {
+                btnNextTurn.Enabled = true;
             }
         }
 
@@ -317,6 +355,11 @@ namespace NeLutiSeCovece
             {
                 kickingPlayer(playerYellow, 0);
                 kocka = 0;
+                btnNextTurn.Enabled = true;
+            }
+            if (!playerYellow.CheckValidMoves(kocka, 0))
+            {
+                btnNextTurn.Enabled = true;
             }
         }
 
@@ -326,6 +369,11 @@ namespace NeLutiSeCovece
             {
                 kickingPlayer(playerYellow, 1);
                 kocka = 0;
+                btnNextTurn.Enabled = true;
+            }
+            if (!playerYellow.CheckValidMoves(kocka, 1))
+            {
+                btnNextTurn.Enabled = true;
             }
         }
 
@@ -335,6 +383,11 @@ namespace NeLutiSeCovece
             {
                 kickingPlayer(playerYellow, 2);
                 kocka = 0;
+                btnNextTurn.Enabled = true;
+            }
+            if (!playerYellow.CheckValidMoves(kocka, 2))
+            {
+                btnNextTurn.Enabled = true;
             }
         }
 
@@ -344,6 +397,11 @@ namespace NeLutiSeCovece
             {
                 kickingPlayer(playerYellow, 3);
                 kocka = 0;
+                btnNextTurn.Enabled = true;
+            }
+            if (!playerYellow.CheckValidMoves(kocka, 3))
+            {
+                btnNextTurn.Enabled = true;
             }
         }
 
@@ -354,6 +412,11 @@ namespace NeLutiSeCovece
             {
                 kickingPlayer(playerGreen, 0);
                 kocka = 0;
+                btnNextTurn.Enabled = true;
+            }
+            if (!playerGreen.CheckValidMoves(kocka, 0))
+            {
+                btnNextTurn.Enabled = true;
             }
         }
 
@@ -363,6 +426,11 @@ namespace NeLutiSeCovece
             {
                 kickingPlayer(playerGreen, 1);
                 kocka = 0;
+                btnNextTurn.Enabled = true;
+            }
+            if (!playerGreen.CheckValidMoves(kocka, 1))
+            {
+                btnNextTurn.Enabled = true;
             }
         }
 
@@ -372,6 +440,11 @@ namespace NeLutiSeCovece
             {
                 kickingPlayer(playerGreen, 2);
                 kocka = 0;
+                btnNextTurn.Enabled = true;
+            }
+            if (!playerGreen.CheckValidMoves(kocka, 2))
+            {
+                btnNextTurn.Enabled = true;
             }
         }
 
@@ -381,6 +454,11 @@ namespace NeLutiSeCovece
             {
                 kickingPlayer(playerGreen, 3);
                 kocka = 0;
+                btnNextTurn.Enabled = true;
+            }
+            if (!playerGreen.CheckValidMoves(kocka, 3))
+            {
+                btnNextTurn.Enabled = true;
             }
         }
 
@@ -391,6 +469,11 @@ namespace NeLutiSeCovece
             {
                 kickingPlayer(playerBlue, 0);
                 kocka = 0;
+                btnNextTurn.Enabled = true;
+            }
+            if (!playerBlue.CheckValidMoves(kocka, 0))
+            {
+                btnNextTurn.Enabled = true;
             }
         }
 
@@ -400,7 +483,12 @@ namespace NeLutiSeCovece
             {
                 kickingPlayer(playerBlue, 1);
                 kocka = 0;
-            }               
+                btnNextTurn.Enabled = true;
+            }
+            if (!playerBlue.CheckValidMoves(kocka, 1))
+            {
+                btnNextTurn.Enabled = true;
+            }
         }
 
         private void btnBlue2_Click(object sender, EventArgs e)
@@ -409,7 +497,12 @@ namespace NeLutiSeCovece
             {
                 kickingPlayer(playerBlue, 2);
                 kocka = 0;
-            }              
+                btnNextTurn.Enabled = true;
+            }
+            if (!playerBlue.CheckValidMoves(kocka, 2))
+            {
+                btnNextTurn.Enabled = true;
+            }
         }
 
         private void btnBlue3_Click(object sender, EventArgs e)
@@ -418,9 +511,15 @@ namespace NeLutiSeCovece
             {
                 kickingPlayer(playerBlue, 3);
                 kocka = 0;
+                btnNextTurn.Enabled = true;
+            }
+            if (!playerBlue.CheckValidMoves(kocka, 3))
+            {
+                btnNextTurn.Enabled = true;
             }
         }
 
+        // Funkcija koja proveruva dali ima drug igrac na istata pozicija za da se vrati vo garazata
         private void kickingPlayer(Player kickerObj, int figNumber)
         {
             for (int i = 0; i < 4; i++)
@@ -455,39 +554,7 @@ namespace NeLutiSeCovece
             }
         }
 
-        public void playGame()
-        {
-            int i = 0;
-
-            while (true)
-            {
-                if (playersObjects[i] != null)
-                {
-                    lbTurn.Text = "Red turn";
-                    playersObjects[i].figures[0].Enabled = true;
-                    playersObjects[i].figures[1].Enabled = true;
-                    playersObjects[i].figures[2].Enabled = true;
-                    playersObjects[i].figures[3].Enabled = true;
-
-
-
-                    playersObjects[i].figures[0].Enabled = false;
-                    playersObjects[i].figures[1].Enabled = false;
-                    playersObjects[i].figures[2].Enabled = false;
-                    playersObjects[i].figures[3].Enabled = false;
-
-                }
-
-
-                i++;
-
-                // vrati go prviot igrac na poteg
-                if (i == 3)
-                    i = 0;
-            }
-
-        }
-
+        // Nastan pri klik na kocka
         private void buttonKocka_Click(object sender, EventArgs e)
         {
             if (kockaStartFlag)
@@ -500,7 +567,66 @@ namespace NeLutiSeCovece
             {
                 timerKocka.Stop();
                 kockaStartFlag = true;
+                buttonKocka.Enabled = false;
+
+                if (playersObjects[turnCounter] != null)
+                {
+                    playersObjects[turnCounter].figures[0].Enabled = true;
+                    playersObjects[turnCounter].figures[1].Enabled = true;
+                    playersObjects[turnCounter].figures[2].Enabled = true;
+                    playersObjects[turnCounter].figures[3].Enabled = true;
+                }
+
+                if (kocka != 6)
+                {
+                    btnNextTurn.Enabled = true;
+                }
+
+                if (checkAnyActive(playersObjects[turnCounter]))
+                    btnNextTurn.Enabled = false;
+
             }  
+        }
+
+        //Nastan pri klik na kopceto za next turn
+        private void btnNextTurn_Click(object sender, EventArgs e)
+        {
+            if (playersObjects[turnCounter] != null)
+            {
+                playersObjects[turnCounter].figures[0].Enabled = false;
+                playersObjects[turnCounter].figures[1].Enabled = false;
+                playersObjects[turnCounter].figures[2].Enabled = false;
+                playersObjects[turnCounter].figures[3].Enabled = false;
+            }
+            turnCounter++;
+            while (playersObjects[turnCounter] == null) {
+                turnCounter++;
+                if (turnCounter >= 4)
+                {
+                    turnCounter = 0;
+                }
+
+            }
+            if (turnCounter >= 4)
+            {
+                turnCounter = 0;
+            }
+
+            buttonKocka.Enabled = true;
+            btnNextTurn.Enabled = false;
+        }
+
+        // Proverka dali postoi nekoj igrac na mapata
+        private Boolean checkAnyActive(Player p)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (p.active[i] == true)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         //Animirana kocka
@@ -537,6 +663,7 @@ namespace NeLutiSeCovece
             }
 
         }
+
         //Gasenje
         private void Game_FormClosed(object sender, FormClosedEventArgs e)
         {
