@@ -107,7 +107,7 @@
             this.lbTurn.AutoSize = true;
             this.lbTurn.BackColor = System.Drawing.Color.Transparent;
             this.lbTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTurn.Location = new System.Drawing.Point(876, 453);
+            this.lbTurn.Location = new System.Drawing.Point(876, 439);
             this.lbTurn.Name = "lbTurn";
             this.lbTurn.Size = new System.Drawing.Size(212, 46);
             this.lbTurn.TabIndex = 19;

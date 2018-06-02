@@ -64,6 +64,9 @@ namespace NeLutiSeCovece
         
         //Funkcija za pridvizuvanje na pionite
         public bool moveFigure(int kocka, int figureNum) {
+            //Postavuvane na pocetna pozicija ako ima 6 i figurata ne e aktivna
+            //Ako e aktivna ja postavuva na soodvetnata pozicija
+            //Vraka bool so cel da se utvrdi deka potegot bil uspesen
             if (kocka == 6 && active[figureNum] == false && !startTaken(figureNum))
             {
                 active[figureNum] = true;
@@ -75,14 +78,17 @@ namespace NeLutiSeCovece
                 if (positionBoard[figureNum] + kocka <= 51 && !figuresOverlap(kocka, figureNum))
                 {
                     positionBoard[figureNum] += kocka;
-                    figures[figureNum].Location = new Point(board[pathBoard[positionBoard[figureNum]]].X + 8, board[pathBoard[positionBoard[figureNum]]].Y + 4);
+                    figures[figureNum].Location = new Point(getLocation(figureNum).X + 8, getLocation(figureNum).Y + 4);
                     return true;
                 }  
             }
             return false;
         }
 
-        // Proverka dali ima slobodni potezi (za next player kopceto)
+        public Point getLocation(int figureNum) {
+            return board[pathBoard[positionBoard[figureNum]]];
+        }
+        // Proverka dali ima slobodni potezi (za next player kopceto) slicna kako  moveFigure samo sto ne ja pomestuva figurata
         public bool CheckValidMoves(int kocka, int figureNum)
         {
             if (kocka == 6 && active[figureNum] == false && !startTaken(figureNum))
@@ -143,5 +149,18 @@ namespace NeLutiSeCovece
             this.active[figureNum] = false;
             this.positionBoard[figureNum] = 0;
         }
+
+        public bool isWinner() {
+            for(int i = 0; i < 4; i++)
+            {
+                if(!(this.positionBoard[i]==48|| this.positionBoard[i] == 49||this.positionBoard[i] == 50||this.positionBoard[i] == 51))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+      
     }
 }

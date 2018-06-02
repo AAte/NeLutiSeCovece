@@ -60,6 +60,7 @@ namespace NeLutiSeCovece
 
             //Pecatene koj igrac e na red
             turnText();
+            winChecker();
 
             if (entryFlag)
             {
@@ -86,26 +87,56 @@ namespace NeLutiSeCovece
             switch (turnCounter)
             {
                 case 0:
-                    lbTurn.Text = "Red turn";
+                    lbTurn.Text = " Red";
                     lbTurn.ForeColor = Color.Red;
                     break;
                 case 1:
-                    lbTurn.Text = "Yellow turn";
+                    lbTurn.Text = "Yellow";
                     lbTurn.ForeColor = Color.Yellow;
                     break;
                 case 2:
-                    lbTurn.Text = "Green turn";
+                    lbTurn.Text = "Green";
                     lbTurn.ForeColor = Color.Green;
                     break;
                 case 3:
-                    lbTurn.Text = "Blue turn";
+                    lbTurn.Text = "Blue";
                     lbTurn.ForeColor = Color.DodgerBlue;
                     break;
 
             }
 
         }
+        public void winChecker() {
+            if (playersObjects[turnCounter]!=null && playersObjects[turnCounter].isWinner())
+            {
+                switch (turnCounter)
+                {
+                    case 0:
+                        MessageBox.Show("Red is the winner!");
+                        Thread.Sleep(5000);
+                        Environment.Exit(1);
+                        break;
+                    case 1:
+                        MessageBox.Show("Yellow is the winner");
+                        Thread.Sleep(5000);
+                        Environment.Exit(1);
+                        break;
+                    case 2:
+                        MessageBox.Show("Green is the winner");
+                        Thread.Sleep(5000);
+                        Environment.Exit(1);
+                        break;
+                    case 3:
+                        MessageBox.Show("Blue is the winner");
+                        Thread.Sleep(5000);
+                        Environment.Exit(1);
+                        break;
 
+                }
+
+            }
+
+        }
         public void drawMap(PaintEventArgs e)
         {
             int x = 400, y = 10;            //pocetni koordinati

@@ -18,12 +18,32 @@ namespace NeLutiSeCovece
             InitializeComponent();
         }
         private void cbCheck() {
-            if (cbRed.Checked == false && cbYellow.Checked == false && cbGreen.Checked == false && cbBlue.Checked == false)
+            int c = 0;
+            if (cbRed.Checked == true)
+            {
+                c++;
+            }
+            if (cbYellow.Checked == true)
+            {
+                c++;
+            }
+            if (cbGreen.Checked == true)
+            {
+                c++;
+            }
+            if (cbBlue.Checked == true)
+            {
+                c++;
+            }
+
+            if (c == 0||c==1)
             {
                 btnStart.Enabled = false;
             }
-            else
+            else if (c >= 2)
+            {
                 btnStart.Enabled = true;
+            }
         }
         // Proverka za selektirani igraci
         private void cbRed_CheckedChanged(object sender, EventArgs e)
