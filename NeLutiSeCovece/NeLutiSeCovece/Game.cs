@@ -18,6 +18,7 @@ namespace NeLutiSeCovece
 
         Player playerRed, playerYellow, playerGreen, playerBlue;
         Player[] playersObjects =new Player[4];
+        Boolean[] bots = new Boolean[4];
 
         Point[] board = new Point[64];
         Point[] garageRed = new Point[4];
@@ -42,10 +43,14 @@ namespace NeLutiSeCovece
         int[] playerBluepath = new int[52] { 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 
                                          14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 60, 61, 62, 63 };
        
-        public Game(ArrayList gameSettingsMenu)
+        public Game(ArrayList gameSettingsMenu,Boolean[] bots)
         {
             InitializeComponent();
             gameSettings = gameSettingsMenu;
+            for(int i = 0; i < 4; i++)
+            {
+                this.bots[i] = bots[i];
+            }
         }
 
         public bool entryFlag = true;
@@ -113,22 +118,18 @@ namespace NeLutiSeCovece
                 {
                     case 0:
                         MessageBox.Show("Red is the winner!");
-                        Thread.Sleep(5000);
                         Environment.Exit(1);
                         break;
                     case 1:
                         MessageBox.Show("Yellow is the winner");
-                        Thread.Sleep(5000);
                         Environment.Exit(1);
                         break;
                     case 2:
                         MessageBox.Show("Green is the winner");
-                        Thread.Sleep(5000);
                         Environment.Exit(1);
                         break;
                     case 3:
                         MessageBox.Show("Blue is the winner");
-                        Thread.Sleep(5000);
                         Environment.Exit(1);
                         break;
 
@@ -140,7 +141,7 @@ namespace NeLutiSeCovece
         public void drawMap(PaintEventArgs e)
         {
             int x = 400, y = 10;            //pocetni koordinati
-
+           
             for (int i = 0; i < 48; i++)
             {
                 // Popolnuvanje na polinjata

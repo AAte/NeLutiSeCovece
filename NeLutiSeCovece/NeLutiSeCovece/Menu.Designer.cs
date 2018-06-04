@@ -43,6 +43,11 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnStart = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.comboRed = new System.Windows.Forms.ComboBox();
+            this.comboYellow = new System.Windows.Forms.ComboBox();
+            this.comboGreen = new System.Windows.Forms.ComboBox();
+            this.comboBlue = new System.Windows.Forms.ComboBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -55,7 +60,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(186, 179);
+            this.label1.Location = new System.Drawing.Point(147, 179);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 39);
             this.label1.TabIndex = 4;
@@ -111,7 +116,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Yellow;
-            this.label2.Location = new System.Drawing.Point(186, 275);
+            this.label2.Location = new System.Drawing.Point(147, 275);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(124, 39);
             this.label2.TabIndex = 11;
@@ -123,7 +128,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Green;
-            this.label3.Location = new System.Drawing.Point(186, 377);
+            this.label3.Location = new System.Drawing.Point(147, 377);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 39);
             this.label3.TabIndex = 12;
@@ -135,7 +140,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label4.Location = new System.Drawing.Point(186, 480);
+            this.label4.Location = new System.Drawing.Point(153, 480);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(90, 39);
             this.label4.TabIndex = 13;
@@ -212,12 +217,73 @@
             this.label5.TabIndex = 19;
             this.label5.Text = "Menu";
             // 
+            // comboRed
+            // 
+            this.comboRed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.comboRed.Enabled = false;
+            this.comboRed.ForeColor = System.Drawing.Color.Black;
+            this.comboRed.FormattingEnabled = true;
+            this.comboRed.Items.AddRange(new object[] {
+            "Player",
+            "Computer"});
+            this.comboRed.Location = new System.Drawing.Point(284, 196);
+            this.comboRed.Name = "comboRed";
+            this.comboRed.Size = new System.Drawing.Size(121, 21);
+            this.comboRed.TabIndex = 20;
+            this.comboRed.Visible = false;
+            // 
+            // comboYellow
+            // 
+            this.comboYellow.BackColor = System.Drawing.Color.Yellow;
+            this.comboYellow.Enabled = false;
+            this.comboYellow.FormattingEnabled = true;
+            this.comboYellow.Items.AddRange(new object[] {
+            "Player",
+            "Computer"});
+            this.comboYellow.Location = new System.Drawing.Point(284, 292);
+            this.comboYellow.Name = "comboYellow";
+            this.comboYellow.Size = new System.Drawing.Size(121, 21);
+            this.comboYellow.TabIndex = 21;
+            this.comboYellow.Visible = false;
+            // 
+            // comboGreen
+            // 
+            this.comboGreen.BackColor = System.Drawing.Color.Green;
+            this.comboGreen.Enabled = false;
+            this.comboGreen.FormattingEnabled = true;
+            this.comboGreen.Items.AddRange(new object[] {
+            "Player",
+            "Computer"});
+            this.comboGreen.Location = new System.Drawing.Point(284, 394);
+            this.comboGreen.Name = "comboGreen";
+            this.comboGreen.Size = new System.Drawing.Size(121, 21);
+            this.comboGreen.TabIndex = 22;
+            this.comboGreen.Visible = false;
+            // 
+            // comboBlue
+            // 
+            this.comboBlue.BackColor = System.Drawing.Color.DodgerBlue;
+            this.comboBlue.Enabled = false;
+            this.comboBlue.FormattingEnabled = true;
+            this.comboBlue.Items.AddRange(new object[] {
+            "Player",
+            "Computer"});
+            this.comboBlue.Location = new System.Drawing.Point(284, 497);
+            this.comboBlue.Name = "comboBlue";
+            this.comboBlue.Size = new System.Drawing.Size(121, 21);
+            this.comboBlue.TabIndex = 23;
+            this.comboBlue.Visible = false;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::NeLutiSeCovece.Properties.Resources.drvo_bg;
             this.ClientSize = new System.Drawing.Size(434, 691);
+            this.Controls.Add(this.comboBlue);
+            this.Controls.Add(this.comboGreen);
+            this.Controls.Add(this.comboYellow);
+            this.Controls.Add(this.comboRed);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.pictureBox4);
@@ -261,5 +327,10 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox comboRed;
+        private System.Windows.Forms.ComboBox comboYellow;
+        private System.Windows.Forms.ComboBox comboGreen;
+        private System.Windows.Forms.ComboBox comboBlue;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

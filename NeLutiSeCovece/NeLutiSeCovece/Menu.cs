@@ -16,24 +16,60 @@ namespace NeLutiSeCovece
         public Menu()
         {
             InitializeComponent();
+            
         }
         private void cbCheck() {
             int c = 0;
+            comboRed.SelectedIndex = 0;
+            comboYellow.SelectedIndex = 0;
+            comboGreen.SelectedIndex = 0;
+            comboBlue.SelectedIndex = 0;
             if (cbRed.Checked == true)
             {
                 c++;
+                comboRed.Enabled = true;
+                comboRed.Visible = true;
             }
+            else
+            {
+                comboRed.Enabled = false;
+                comboRed.Visible = false;
+            }
+
             if (cbYellow.Checked == true)
             {
                 c++;
+                comboYellow.Enabled = true;
+                comboYellow.Visible = true;
             }
+            else
+            {
+                comboYellow.Enabled = false;
+                comboYellow.Visible = false;
+            }
+
             if (cbGreen.Checked == true)
             {
                 c++;
+                comboGreen.Enabled = true;
+                comboGreen.Visible = true;
             }
+            else
+            {
+                comboGreen.Enabled = false;
+                comboGreen.Visible = false;
+            }
+
             if (cbBlue.Checked == true)
             {
                 c++;
+                comboBlue.Enabled = true;
+                comboBlue.Visible = true;
+            }
+            else
+            {
+                comboBlue.Enabled = false;
+                comboBlue.Visible = false;
             }
 
             if (c == 0||c==1)
@@ -75,9 +111,51 @@ namespace NeLutiSeCovece
             gameSettings.Add(cbGreen.Checked);
             gameSettings.Add(cbBlue.Checked);
 
-            Form game = new Game(gameSettings);
+            Boolean[] bots = new Boolean[4];
+            settingBots(bots);
+            Form game = new Game(gameSettings,bots);
             this.Hide();
             game.Show();
         }
+
+        private void settingBots(Boolean[] bots) {
+
+            if (comboRed.SelectedItem == "Computer")
+            {
+                bots[0] = true;
+            }
+            else
+            {
+                bots[0] = false;
+            }
+
+            if (comboYellow.SelectedItem == "Computer")
+            {
+                bots[1] = true;
+            }
+            else
+            {
+                bots[1] = false;
+            }
+
+            if (comboGreen.SelectedItem == "Computer")
+            {
+                bots[2] = true;
+            }
+            else
+            {
+                bots[2] = false;
+            }
+            
+            if (comboBlue.SelectedItem == "Computer")
+            {
+                bots[3] = true;
+            }
+            else
+            {
+                bots[3] = false;
+            }
+        }
+
     }
 }
