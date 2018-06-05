@@ -16,14 +16,14 @@ namespace NeLutiSeCovece
         public Menu()
         {
             InitializeComponent();
-            
-        }
-        private void cbCheck() {
-            int c = 0;
             comboRed.SelectedIndex = 0;
             comboYellow.SelectedIndex = 0;
             comboGreen.SelectedIndex = 0;
             comboBlue.SelectedIndex = 0;
+        }
+        private void cbCheck() {
+            int c = 0;
+           
             if (cbRed.Checked == true)
             {
                 c++;

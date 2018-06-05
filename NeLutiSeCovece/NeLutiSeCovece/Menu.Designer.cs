@@ -224,8 +224,7 @@
             this.comboRed.ForeColor = System.Drawing.Color.Black;
             this.comboRed.FormattingEnabled = true;
             this.comboRed.Items.AddRange(new object[] {
-            "Player",
-            "Computer"});
+            "Player"});
             this.comboRed.Location = new System.Drawing.Point(284, 196);
             this.comboRed.Name = "comboRed";
             this.comboRed.Size = new System.Drawing.Size(121, 21);

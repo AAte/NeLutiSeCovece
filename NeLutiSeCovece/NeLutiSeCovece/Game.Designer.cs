@@ -52,6 +52,7 @@
             this.btnRed0 = new System.Windows.Forms.Button();
             this.labelRoll = new System.Windows.Forms.Label();
             this.buttonKocka = new System.Windows.Forms.Button();
+            this.timerWait = new System.Windows.Forms.Timer(this.components);
             this.panelGame.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -386,6 +387,10 @@
             this.buttonKocka.UseVisualStyleBackColor = false;
             this.buttonKocka.Click += new System.EventHandler(this.buttonKocka_Click);
             // 
+            // timerWait
+            // 
+            this.timerWait.Interval = 3000;
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -427,6 +432,7 @@
         private System.Windows.Forms.Button buttonKocka;
         private System.Windows.Forms.Label lbTurn;
         private System.Windows.Forms.Button btnNextTurn;
+        private System.Windows.Forms.Timer timerWait;
     }
 }
 

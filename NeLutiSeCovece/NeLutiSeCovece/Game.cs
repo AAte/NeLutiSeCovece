@@ -63,29 +63,36 @@ namespace NeLutiSeCovece
             //Vertinkalna linija
             e.Graphics.DrawLine(blackPen, new Point(800, 0), new Point(800, 780));
 
-            //Pecatene koj igrac e na red
-            turnText();
-            winChecker();
-
             if (entryFlag)
             {
                 // Polnenje na garazhite vo odnos na izbranite igraci (checkbox-ovite) od menito
-            if (Convert.ToBoolean(gameSettings[0]))
-                fillGarageRed();
+                if (Convert.ToBoolean(gameSettings[0]))
+                    fillGarageRed();
 
-            if (Convert.ToBoolean(gameSettings[1]))
-                fillGarageYellow();
+                if (Convert.ToBoolean(gameSettings[1]))
+                    fillGarageYellow();
 
-            if (Convert.ToBoolean(gameSettings[2]))
-                fillGarageGreen();
+                if (Convert.ToBoolean(gameSettings[2]))
+                    fillGarageGreen();
 
-            if (Convert.ToBoolean(gameSettings[3]))
-                fillGarageBlue();
+                if (Convert.ToBoolean(gameSettings[3]))
+                    fillGarageBlue();
+
+                
             }
 
             entryFlag = false;
+
+            
+            //Pecatene koj igrac e na red
+            turnText();
+            winChecker();
+           
+
+          
         }
 
+      
         public void turnText()
         {
 
@@ -674,6 +681,34 @@ namespace NeLutiSeCovece
             doubleTurn = false;
             buttonKocka.Enabled = true;
             btnNextTurn.Enabled = false;
+            botBehaviour();
+            
+        }
+        public void botBehaviour()
+        {
+            Random r = new Random();
+            int broj = r.Next(1, 7);
+            kocka = broj;
+            if (playersObjects[turnCounter] != null && bots[turnCounter] == true)
+            {
+                if (kocka == 6)
+                {
+                    doubleTurn = true;
+                }
+
+                for (int i = 0; i < 4; i++)
+                 {
+                     if (playersObjects[turnCounter].moveFigure(kocka, i))
+                     {
+                        kickingPlayer(playersObjects[turnCounter], i);
+                        break;
+                     }
+                 }
+                
+                kocka = 0;
+                btnNextTurn.Enabled = true;
+                btnNextTurn.PerformClick();
+            }
         }
 
         // Proverka dali postoi nekoj igrac na mapata
