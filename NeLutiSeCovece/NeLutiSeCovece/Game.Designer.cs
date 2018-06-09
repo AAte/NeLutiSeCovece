@@ -389,7 +389,8 @@
             // 
             // timerWait
             // 
-            this.timerWait.Interval = 3000;
+            this.timerWait.Interval = 1500;
+            this.timerWait.Tick += new System.EventHandler(this.timerWait_Tick);
             // 
             // Game
             // 

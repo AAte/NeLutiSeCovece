@@ -681,34 +681,18 @@ namespace NeLutiSeCovece
             doubleTurn = false;
             buttonKocka.Enabled = true;
             btnNextTurn.Enabled = false;
-            botBehaviour();
+            if (playersObjects[turnCounter] != null && bots[turnCounter] == true)
+                botBehaviour();
             
         }
         public void botBehaviour()
         {
-            Random r = new Random();
-            int broj = r.Next(1, 7);
-            kocka = broj;
-            if (playersObjects[turnCounter] != null && bots[turnCounter] == true)
-            {
-                if (kocka == 6)
-                {
-                    doubleTurn = true;
-                }
-
-                for (int i = 0; i < 4; i++)
-                 {
-                     if (playersObjects[turnCounter].moveFigure(kocka, i))
-                     {
-                        kickingPlayer(playersObjects[turnCounter], i);
-                        break;
-                     }
-                 }
-                
-                kocka = 0;
-                btnNextTurn.Enabled = true;
-                btnNextTurn.PerformClick();
-            }
+            // Random r = new Random();
+            //int broj = r.Next(1, 7);
+            //kocka = broj;
+            timerWait.Start();
+            timerKocka.Start();
+   
         }
 
         // Proverka dali postoi nekoj igrac na mapata
@@ -723,6 +707,32 @@ namespace NeLutiSeCovece
             }
             return false;
         }
+
+        private void timerWait_Tick(object sender, EventArgs e)
+        {
+            timerKocka.Stop();
+            timerWait.Stop();
+            if (playersObjects[turnCounter] != null && bots[turnCounter] == true)
+            {
+                if (kocka == 6)
+                {
+                    doubleTurn = true;
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    if (playersObjects[turnCounter].moveFigure(kocka, i))
+                    {
+                        kickingPlayer(playersObjects[turnCounter], i);
+                        break;
+                    }
+                }
+                kocka = 0;
+                btnNextTurn.Enabled = true;
+                btnNextTurn.PerformClick();
+            }
+        }
+
         private Boolean checkMoves(Player p)
         {
             for (int i = 0; i < 4; i++)
