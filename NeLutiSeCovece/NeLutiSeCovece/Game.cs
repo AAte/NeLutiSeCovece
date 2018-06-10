@@ -46,6 +46,7 @@ namespace NeLutiSeCovece
         public Game(ArrayList gameSettingsMenu,Boolean[] bots)
         {
             InitializeComponent();
+            DoubleBuffered = true;
             gameSettings = gameSettingsMenu;
             for(int i = 0; i < 4; i++)
             {
