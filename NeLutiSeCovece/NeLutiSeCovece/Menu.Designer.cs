@@ -60,7 +60,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(147, 179);
+            this.label1.Location = new System.Drawing.Point(107, 180);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 39);
             this.label1.TabIndex = 4;
@@ -70,7 +70,7 @@
             // 
             this.cbRed.BackColor = System.Drawing.Color.Transparent;
             this.cbRed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbRed.Location = new System.Drawing.Point(74, 179);
+            this.cbRed.Location = new System.Drawing.Point(34, 180);
             this.cbRed.Name = "cbRed";
             this.cbRed.Size = new System.Drawing.Size(58, 39);
             this.cbRed.TabIndex = 0;
@@ -81,7 +81,7 @@
             // 
             this.cbYellow.BackColor = System.Drawing.Color.Transparent;
             this.cbYellow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbYellow.Location = new System.Drawing.Point(74, 275);
+            this.cbYellow.Location = new System.Drawing.Point(34, 276);
             this.cbYellow.Name = "cbYellow";
             this.cbYellow.Size = new System.Drawing.Size(58, 39);
             this.cbYellow.TabIndex = 8;
@@ -92,7 +92,7 @@
             // 
             this.cbGreen.BackColor = System.Drawing.Color.Transparent;
             this.cbGreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbGreen.Location = new System.Drawing.Point(74, 377);
+            this.cbGreen.Location = new System.Drawing.Point(34, 378);
             this.cbGreen.Name = "cbGreen";
             this.cbGreen.Size = new System.Drawing.Size(58, 39);
             this.cbGreen.TabIndex = 9;
@@ -103,7 +103,7 @@
             // 
             this.cbBlue.BackColor = System.Drawing.Color.Transparent;
             this.cbBlue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbBlue.Location = new System.Drawing.Point(74, 480);
+            this.cbBlue.Location = new System.Drawing.Point(34, 481);
             this.cbBlue.Name = "cbBlue";
             this.cbBlue.Size = new System.Drawing.Size(58, 39);
             this.cbBlue.TabIndex = 10;
@@ -116,7 +116,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Yellow;
-            this.label2.Location = new System.Drawing.Point(147, 275);
+            this.label2.Location = new System.Drawing.Point(107, 276);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(124, 39);
             this.label2.TabIndex = 11;
@@ -128,7 +128,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Green;
-            this.label3.Location = new System.Drawing.Point(147, 377);
+            this.label3.Location = new System.Drawing.Point(107, 378);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 39);
             this.label3.TabIndex = 12;
@@ -140,7 +140,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label4.Location = new System.Drawing.Point(153, 480);
+            this.label4.Location = new System.Drawing.Point(113, 481);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(90, 39);
             this.label4.TabIndex = 13;
@@ -151,7 +151,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(114, 167);
+            this.pictureBox1.Location = new System.Drawing.Point(74, 168);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(37, 51);
             this.pictureBox1.TabIndex = 14;
@@ -162,7 +162,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(114, 263);
+            this.pictureBox2.Location = new System.Drawing.Point(74, 264);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(37, 51);
             this.pictureBox2.TabIndex = 15;
@@ -173,7 +173,7 @@
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox3.Location = new System.Drawing.Point(114, 365);
+            this.pictureBox3.Location = new System.Drawing.Point(74, 366);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(37, 51);
             this.pictureBox3.TabIndex = 16;
@@ -184,7 +184,7 @@
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox4.Location = new System.Drawing.Point(114, 468);
+            this.pictureBox4.Location = new System.Drawing.Point(74, 469);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(37, 51);
             this.pictureBox4.TabIndex = 17;
@@ -197,7 +197,7 @@
             this.btnStart.FlatAppearance.BorderSize = 3;
             this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStart.Location = new System.Drawing.Point(105, 567);
+            this.btnStart.Location = new System.Drawing.Point(99, 565);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(223, 48);
             this.btnStart.TabIndex = 18;
@@ -211,7 +211,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label5.Location = new System.Drawing.Point(146, 41);
+            this.label5.Location = new System.Drawing.Point(146, 43);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(123, 46);
             this.label5.TabIndex = 19;
@@ -224,8 +224,9 @@
             this.comboRed.ForeColor = System.Drawing.Color.Black;
             this.comboRed.FormattingEnabled = true;
             this.comboRed.Items.AddRange(new object[] {
-            "Player"});
-            this.comboRed.Location = new System.Drawing.Point(284, 196);
+            "Player",
+            "Computer"});
+            this.comboRed.Location = new System.Drawing.Point(244, 197);
             this.comboRed.Name = "comboRed";
             this.comboRed.Size = new System.Drawing.Size(121, 21);
             this.comboRed.TabIndex = 20;
@@ -239,7 +240,7 @@
             this.comboYellow.Items.AddRange(new object[] {
             "Player",
             "Computer"});
-            this.comboYellow.Location = new System.Drawing.Point(284, 292);
+            this.comboYellow.Location = new System.Drawing.Point(244, 293);
             this.comboYellow.Name = "comboYellow";
             this.comboYellow.Size = new System.Drawing.Size(121, 21);
             this.comboYellow.TabIndex = 21;
@@ -253,7 +254,7 @@
             this.comboGreen.Items.AddRange(new object[] {
             "Player",
             "Computer"});
-            this.comboGreen.Location = new System.Drawing.Point(284, 394);
+            this.comboGreen.Location = new System.Drawing.Point(244, 395);
             this.comboGreen.Name = "comboGreen";
             this.comboGreen.Size = new System.Drawing.Size(121, 21);
             this.comboGreen.TabIndex = 22;
@@ -267,7 +268,7 @@
             this.comboBlue.Items.AddRange(new object[] {
             "Player",
             "Computer"});
-            this.comboBlue.Location = new System.Drawing.Point(284, 497);
+            this.comboBlue.Location = new System.Drawing.Point(244, 498);
             this.comboBlue.Name = "comboBlue";
             this.comboBlue.Size = new System.Drawing.Size(121, 21);
             this.comboBlue.TabIndex = 23;
@@ -301,7 +302,7 @@
             this.MaximumSize = new System.Drawing.Size(450, 730);
             this.MinimumSize = new System.Drawing.Size(450, 730);
             this.Name = "Menu";
-            this.Text = "i";
+            this.Text = "Ne Luti Se Covece";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

@@ -85,6 +85,17 @@ namespace NeLutiSeCovece
             return false;
         }
 
+        public bool moveToStart(int kocka, int figureNum)
+        {
+            if (kocka == 6 && active[figureNum] == false && !startTaken(figureNum))
+            {
+                active[figureNum] = true;
+                figures[figureNum].Location = new Point(board[pathBoard[0]].X + 8, board[pathBoard[0]].Y + 4);
+                return true;
+            }
+            return false;
+
+        }
         public Point getLocation(int figureNum) {
             return board[pathBoard[positionBoard[figureNum]]];
         }
@@ -136,7 +147,7 @@ namespace NeLutiSeCovece
             return false;
         }
 
-        //Funkcija za zemanje na pozicijata na pionot
+        // Funkcija za zemanje na pozicijata na pionot
         public int returnPosition(int p)
         {
            return this.pathBoard[positionBoard[p]];
@@ -150,6 +161,7 @@ namespace NeLutiSeCovece
             this.positionBoard[figureNum] = 0;
         }
 
+        // Funkcija za proverka na pobednikot
         public bool isWinner() {
             for(int i = 0; i < 4; i++)
             {

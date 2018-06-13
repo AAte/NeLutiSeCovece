@@ -402,7 +402,7 @@
             this.MaximumSize = new System.Drawing.Size(1180, 780);
             this.MinimumSize = new System.Drawing.Size(1180, 780);
             this.Name = "Game";
-            this.Text = "Mapa";
+            this.Text = "Ne Luti Se Covece";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Game_FormClosed);
             this.panelGame.ResumeLayout(false);
             this.panelGame.PerformLayout();

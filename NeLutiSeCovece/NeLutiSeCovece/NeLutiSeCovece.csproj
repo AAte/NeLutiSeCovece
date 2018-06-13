@@ -122,5 +122,17 @@
   <ItemGroup>
     <None Include="Resources\pion_yellow.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kocka.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kocka.wav.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kocka.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\movement.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

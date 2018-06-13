@@ -71,6 +71,15 @@ namespace NeLutiSeCovece.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream kocka {
+            get {
+                return ResourceManager.GetStream("kocka", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap kocka_1 {
@@ -127,6 +136,15 @@ namespace NeLutiSeCovece.Properties {
             get {
                 object obj = ResourceManager.GetObject("kocka_6", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream movement {
+            get {
+                return ResourceManager.GetStream("movement", resourceCulture);
             }
         }
         
