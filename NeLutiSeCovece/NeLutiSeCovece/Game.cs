@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Collections;
 using System.Threading;
 using System.Media;
+using System.Drawing.Drawing2D;
+using System.Reflection;
 
 namespace NeLutiSeCovece
 {
@@ -30,6 +32,7 @@ namespace NeLutiSeCovece
         Pen blackPen = new Pen(Color.Black, 3);
         int turnCounter = 0;
         bool doubleTurn = false;
+        bool endGame = false;
         int kocka;
 
         int[] playerRedpath = new int[52] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 
@@ -47,15 +50,20 @@ namespace NeLutiSeCovece
         SoundPlayer diceRollSound = new SoundPlayer(NeLutiSeCovece.Properties.Resources.kocka);
         SoundPlayer playerMovementSound = new SoundPlayer(NeLutiSeCovece.Properties.Resources.movement);
 
+        
         public Game(ArrayList gameSettingsMenu,Boolean[] bots)
         {
             InitializeComponent();
             DoubleBuffered = true;
             gameSettings = gameSettingsMenu;
-            for(int i = 0; i < 4; i++)
+            
+            for (int i = 0; i < 4; i++)
             {
                 this.bots[i] = bots[i];
             }
+
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, panelGame, new object[] { true });
+
         }
 
         public bool entryFlag = true;
@@ -67,6 +75,8 @@ namespace NeLutiSeCovece
 
             // Vertinkalna linija
             e.Graphics.DrawLine(blackPen, new Point(800, 0), new Point(800, 780));
+
+           
 
             if (entryFlag)
             {
@@ -83,12 +93,27 @@ namespace NeLutiSeCovece
                 if (Convert.ToBoolean(gameSettings[3]))
                     fillGarageBlue();
 
-                if (bots[0])
+                while (playersObjects[turnCounter] == null)
+                {
+                    turnCounter++;
+                    turnCounter %= 4;
+                }
+                if (bots[0] && turnCounter == 0)
+                {
+                    botBehaviour();
+                }else if (bots[1] && turnCounter==1)
+                {
+                    botBehaviour();
+                }else if (bots[2] && turnCounter == 2)
+                {
+                    botBehaviour();
+                }else if (bots[3] && turnCounter == 3)
                 {
                     botBehaviour();
                 }
             }
 
+           
             entryFlag = false;
 
             
@@ -129,27 +154,34 @@ namespace NeLutiSeCovece
 
         // Proverka za pobednik i prikaz na istiot so sto zavrsuva  i igrata
         public void winChecker() {
-            if (playersObjects[turnCounter]!=null && playersObjects[turnCounter].isWinner())
+            if (playersObjects[turnCounter]!=null && playersObjects[turnCounter].isWinner() && !endGame)
             {
                 switch (turnCounter)
                 {
                     case 0:
-                        MessageBox.Show("Red is the winner!");
+                        if(MessageBox.Show("Red is the winner!", "Winner", MessageBoxButtons.OK) == System.Windows.Forms.DialogResult.OK)
+                        {
+                        }
                         Environment.Exit(1);
                         break;
                     case 1:
-                        MessageBox.Show("Yellow is the winner");
+                        if (MessageBox.Show("Yellow is the winner!", "Winner", MessageBoxButtons.OK) == System.Windows.Forms.DialogResult.OK)
+                        {
+                        }
                         Environment.Exit(1);
                         break;
                     case 2:
-                        MessageBox.Show("Green is the winner");
+                        if (MessageBox.Show("Green is the winner!", "Winner", MessageBoxButtons.OK) == System.Windows.Forms.DialogResult.OK)
+                        {
+                        }
                         Environment.Exit(1);
                         break;
                     case 3:
-                        MessageBox.Show("Blue is the winner");
+                        if (MessageBox.Show("Blue is the winner!", "Winner", MessageBoxButtons.OK) == System.Windows.Forms.DialogResult.OK)
+                        {
+                        }
                         Environment.Exit(1);
                         break;
-
                 }
 
             }
@@ -157,6 +189,8 @@ namespace NeLutiSeCovece
         }
         public void drawMap(PaintEventArgs e)
         {
+
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
             int x = 400, y = 10;            //pocetni koordinati
            
             for (int i = 0; i < 48; i++)
@@ -650,6 +684,41 @@ namespace NeLutiSeCovece
             }
         }
 
+        private bool canKickPlayer(Player kickerObj, int figNumber)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                // proverka dali se raboti za istiot igrac
+                if (playersObjects[i] != null && kickerObj.Equals(playersObjects[i]))
+                {
+                    continue;
+                }
+
+                // dokolku se raboti za razlicen igrac
+                if (playersObjects[i] != null && kickerObj.returnPosition(figNumber) == playersObjects[i].returnPosition(0) && kickerObj.active[figNumber])
+                {
+                    return true;
+                    break;
+                }
+                if (playersObjects[i] != null && kickerObj.returnPosition(figNumber) == playersObjects[i].returnPosition(1) && kickerObj.active[figNumber])
+                {
+                    return true;
+                    break;
+                }
+                if (playersObjects[i] != null && kickerObj.returnPosition(figNumber) == playersObjects[i].returnPosition(2) && kickerObj.active[figNumber])
+                {
+                    return true;
+                    break;
+                }
+                if (playersObjects[i] != null && kickerObj.returnPosition(figNumber) == playersObjects[i].returnPosition(3) && kickerObj.active[figNumber])
+                {
+                    return true;
+                    break;
+                }
+            }
+            return false;
+        }
+
         // Nastan pri klik na kocka
         private void buttonKocka_Click(object sender, EventArgs e)
         {
@@ -766,6 +835,27 @@ namespace NeLutiSeCovece
                 if (kocka == 6)
                 {
                     doubleTurn = true;
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    if (canKickPlayer(playersObjects[turnCounter],i))
+                    {
+                        playerMovementSound.Play();
+                        playersObjects[turnCounter].moveFigure(kocka, i);
+                        kickingPlayer(playersObjects[turnCounter], i);
+                        kocka = 0;
+                        break;
+                    }
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    if (playersObjects[turnCounter].moveAwayFromStart(kocka, i))
+                    {
+                        playerMovementSound.Play();
+                        kickingPlayer(playersObjects[turnCounter], i);
+                        kocka = 0;
+                        break;
+                    }
                 }
                 for (int i = 0; i < 4; i++)
                 {

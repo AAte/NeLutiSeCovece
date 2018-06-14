@@ -96,6 +96,21 @@ namespace NeLutiSeCovece
             return false;
 
         }
+
+        public bool moveAwayFromStart(int kocka, int figureNum)
+        {
+            if (active[figureNum] && positionBoard[figureNum]==0)
+            {
+                if (positionBoard[figureNum] + kocka <= 51 && !figuresOverlap(kocka, figureNum))
+                {
+                    positionBoard[figureNum] += kocka;
+                    figures[figureNum].Location = new Point(getLocation(figureNum).X + 8, getLocation(figureNum).Y + 4);
+                    return true;
+                }
+            }
+            return false;
+        }
+        // Ja vraka tocnata lokacija na tablata
         public Point getLocation(int figureNum) {
             return board[pathBoard[positionBoard[figureNum]]];
         }

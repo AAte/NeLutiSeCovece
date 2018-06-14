@@ -114,8 +114,8 @@ namespace NeLutiSeCovece
             Boolean[] bots = new Boolean[4];
             settingBots(bots);
             Form game = new Game(gameSettings,bots);
-            this.Hide();
             game.Show();
+            this.Hide();
         }
 
         private void settingBots(Boolean[] bots) {
