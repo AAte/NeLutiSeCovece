@@ -17,12 +17,17 @@ namespace NeLutiSeCovece
 {
     public partial class Game : Form
     {   
+        // Lista vo kade se smesteni koi igraci se aktivni
         public static ArrayList gameSettings;
 
+        // Objekti za sekoj od igracite
         Player playerRed, playerYellow, playerGreen, playerBlue;
         Player[] playersObjects =new Player[4];
-        Boolean[] bots = new Boolean[4];
 
+        // Da se odredi dali eden igrac e igran od kompjuterot ili ne
+        Boolean[] bots = new Boolean[4];
+        
+        // Niza na lokacii za tablata kako i za garazite
         Point[] board = new Point[64];
         Point[] garageRed = new Point[4];
         Point[] garageYellow = new Point[4];
@@ -30,11 +35,17 @@ namespace NeLutiSeCovece
         Point[] garageGreen = new Point[4];
 
         Pen blackPen = new Pen(Color.Black, 3);
+        
+        // Brojac so koj se odreduva redot na igracite
         int turnCounter = 0;
+
         bool doubleTurn = false;
         bool endGame = false;
+        bool entryFlag = true;
+        // Se smestuva rezultatot na kockata
         int kocka;
 
+        // Unikatnata pateka na sekoj od igracite
         int[] playerRedpath = new int[52] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 
                                          26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51 };
 
@@ -47,6 +58,8 @@ namespace NeLutiSeCovece
         int[] playerBluepath = new int[52] { 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 
                                          14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 60, 61, 62, 63 };
 
+
+        // Zvuci za vrtene na kockata i pomestuvane na figurite
         SoundPlayer diceRollSound = new SoundPlayer(NeLutiSeCovece.Properties.Resources.kocka);
         SoundPlayer playerMovementSound = new SoundPlayer(NeLutiSeCovece.Properties.Resources.movement);
 
@@ -55,18 +68,18 @@ namespace NeLutiSeCovece
         {
             InitializeComponent();
             DoubleBuffered = true;
-            gameSettings = gameSettingsMenu;
+            gameSettings = gameSettingsMenu; // Aktivni igraci
             
             for (int i = 0; i < 4; i++)
             {
-                this.bots[i] = bots[i];
+                this.bots[i] = bots[i]; // Aktivni botovi
             }
 
-            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, panelGame, new object[] { true });
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, panelGame, new object[] { true }); // DoubleBuffered za panelot
 
         }
 
-        public bool entryFlag = true;
+        
 
         private void panelGame_Paint(object sender, PaintEventArgs e)
         {
@@ -80,37 +93,7 @@ namespace NeLutiSeCovece
 
             if (entryFlag)
             {
-                // Polnenje na garazhite vo odnos na izbranite igraci (checkbox-ovite) od menito
-                if (Convert.ToBoolean(gameSettings[0]))
-                    fillGarageRed();
-
-                if (Convert.ToBoolean(gameSettings[1]))
-                    fillGarageYellow();
-
-                if (Convert.ToBoolean(gameSettings[2]))
-                    fillGarageGreen();
-
-                if (Convert.ToBoolean(gameSettings[3]))
-                    fillGarageBlue();
-
-                while (playersObjects[turnCounter] == null)
-                {
-                    turnCounter++;
-                    turnCounter %= 4;
-                }
-                if (bots[0] && turnCounter == 0)
-                {
-                    botBehaviour();
-                }else if (bots[1] && turnCounter==1)
-                {
-                    botBehaviour();
-                }else if (bots[2] && turnCounter == 2)
-                {
-                    botBehaviour();
-                }else if (bots[3] && turnCounter == 3)
-                {
-                    botBehaviour();
-                }
+                fillAllGarages();
             }
 
            
@@ -120,9 +103,45 @@ namespace NeLutiSeCovece
             // Pecatene koj igrac e na red
             turnText();
             winChecker();
-           
-
           
+        }
+
+        public void fillAllGarages()
+        {
+            // Polnenje na garazhite vo odnos na izbranite igraci (checkbox-ovite) od menito
+            if (Convert.ToBoolean(gameSettings[0]))
+                fillGarageRed();
+
+            if (Convert.ToBoolean(gameSettings[1]))
+                fillGarageYellow();
+
+            if (Convert.ToBoolean(gameSettings[2]))
+                fillGarageGreen();
+
+            if (Convert.ToBoolean(gameSettings[3]))
+                fillGarageBlue();
+
+            while (playersObjects[turnCounter] == null)
+            {
+                turnCounter++;
+                turnCounter %= 4;
+            }
+            if (bots[0] && turnCounter == 0)
+            {
+                botBehaviour();
+            }
+            else if (bots[1] && turnCounter == 1)
+            {
+                botBehaviour();
+            }
+            else if (bots[2] && turnCounter == 2)
+            {
+                botBehaviour();
+            }
+            else if (bots[3] && turnCounter == 3)
+            {
+                botBehaviour();
+            }
         }
 
         // Funkcija za prikaz koj e na red na ekranot
@@ -399,10 +418,6 @@ namespace NeLutiSeCovece
                 btnNextTurn.Enabled = true;
                 playerMovementSound.Play();
             }
-            if (!playerRed.CheckValidMoves(kocka, 0))
-            {
-                btnNextTurn.Enabled = true;
-            }
             Invalidate();
         }
         
@@ -414,10 +429,6 @@ namespace NeLutiSeCovece
                 kocka = 0;
                 btnNextTurn.Enabled = true;
                 playerMovementSound.Play();
-            }
-            if (!playerRed.CheckValidMoves(kocka, 1))
-            {
-                btnNextTurn.Enabled = true;
             }
             Invalidate();
         }
@@ -431,10 +442,7 @@ namespace NeLutiSeCovece
                 btnNextTurn.Enabled = true;
                 playerMovementSound.Play();
             }
-            if (!playerRed.CheckValidMoves(kocka, 2))
-            {
-                btnNextTurn.Enabled = true;
-            }
+            
             Invalidate();
         }
 
@@ -447,10 +455,7 @@ namespace NeLutiSeCovece
                 btnNextTurn.Enabled = true;
                 playerMovementSound.Play();
             }
-            if (!playerRed.CheckValidMoves(kocka, 3))
-            {
-                btnNextTurn.Enabled = true;
-            }
+           
             Invalidate();
         }
 
@@ -464,10 +469,7 @@ namespace NeLutiSeCovece
                 btnNextTurn.Enabled = true;
                 playerMovementSound.Play();
             }
-            if (!playerYellow.CheckValidMoves(kocka, 0))
-            {
-                btnNextTurn.Enabled = true;
-            }
+           
             Invalidate();
         }
 
@@ -480,10 +482,7 @@ namespace NeLutiSeCovece
                 btnNextTurn.Enabled = true;
                 playerMovementSound.Play();
             }
-            if (!playerYellow.CheckValidMoves(kocka, 1))
-            {
-                btnNextTurn.Enabled = true;
-            }
+           
             Invalidate();
         }
 
@@ -496,10 +495,7 @@ namespace NeLutiSeCovece
                 btnNextTurn.Enabled = true;
                 playerMovementSound.Play();
             }
-            if (!playerYellow.CheckValidMoves(kocka, 2))
-            {
-                btnNextTurn.Enabled = true;
-            }
+           
             Invalidate();
         }
 
@@ -512,10 +508,7 @@ namespace NeLutiSeCovece
                 btnNextTurn.Enabled = true;
                 playerMovementSound.Play();
             }
-            if (!playerYellow.CheckValidMoves(kocka, 3))
-            {
-                btnNextTurn.Enabled = true;
-            }
+            
             Invalidate();
         }
 
@@ -529,10 +522,7 @@ namespace NeLutiSeCovece
                 btnNextTurn.Enabled = true;
                 playerMovementSound.Play();
             }
-            if (!playerGreen.CheckValidMoves(kocka, 0))
-            {
-                btnNextTurn.Enabled = true;
-            }
+           
             Invalidate();
         }
 
@@ -545,10 +535,7 @@ namespace NeLutiSeCovece
                 btnNextTurn.Enabled = true;
                 playerMovementSound.Play();
             }
-            if (!playerGreen.CheckValidMoves(kocka, 1))
-            {
-                btnNextTurn.Enabled = true;
-            }
+           
             Invalidate();
         }
 
@@ -561,10 +548,7 @@ namespace NeLutiSeCovece
                 btnNextTurn.Enabled = true;
                 playerMovementSound.Play();
             }
-            if (!playerGreen.CheckValidMoves(kocka, 2))
-            {
-                btnNextTurn.Enabled = true;
-            }
+           
             Invalidate();
         }
 
@@ -577,10 +561,7 @@ namespace NeLutiSeCovece
                 btnNextTurn.Enabled = true;
                 playerMovementSound.Play();
             }
-            if (!playerGreen.CheckValidMoves(kocka, 3))
-            {
-                btnNextTurn.Enabled = true;
-            }
+            
             Invalidate();
         }
 
@@ -594,10 +575,7 @@ namespace NeLutiSeCovece
                 btnNextTurn.Enabled = true;
                 playerMovementSound.Play();
             }
-            if (!playerBlue.CheckValidMoves(kocka, 0))
-            {
-                btnNextTurn.Enabled = true;
-            }
+            
             Invalidate();
         }
 
@@ -610,10 +588,7 @@ namespace NeLutiSeCovece
                 btnNextTurn.Enabled = true;
                 playerMovementSound.Play();
             }
-            if (!playerBlue.CheckValidMoves(kocka, 1))
-            {
-                btnNextTurn.Enabled = true;
-            }
+            
             Invalidate();
         }
 
@@ -626,10 +601,7 @@ namespace NeLutiSeCovece
                 btnNextTurn.Enabled = true;
                 playerMovementSound.Play();
             }
-            if (!playerBlue.CheckValidMoves(kocka, 2))
-            {
-                btnNextTurn.Enabled = true;
-            }
+            
             Invalidate();
         }
 
@@ -642,10 +614,7 @@ namespace NeLutiSeCovece
                 btnNextTurn.Enabled = true;
                 playerMovementSound.Play();
             }
-            if (!playerBlue.CheckValidMoves(kocka, 3))
-            {
-                btnNextTurn.Enabled = true;
-            }
+           
             Invalidate();
         }
 
@@ -803,13 +772,7 @@ namespace NeLutiSeCovece
             
         }
 
-        public void botBehaviour()
-        {
-            timerWait.Start();
-            timerKocka.Start();
-            diceRollSound.PlayLooping();
-            
-        }
+      
 
         // Proverka dali postoi nekoj igrac na mapata
         private Boolean checkAnyInactive(Player p)
@@ -824,6 +787,13 @@ namespace NeLutiSeCovece
             return false;
         }
 
+        public void botBehaviour()
+        {
+            timerWait.Start();
+            timerKocka.Start();
+            diceRollSound.PlayLooping();
+
+        }
         // Funkcija za igrane na botovite
         private void timerWait_Tick(object sender, EventArgs e)
         {

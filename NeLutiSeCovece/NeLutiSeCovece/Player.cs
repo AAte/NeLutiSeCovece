@@ -110,10 +110,12 @@ namespace NeLutiSeCovece
             }
             return false;
         }
+
         // Ja vraka tocnata lokacija na tablata
         public Point getLocation(int figureNum) {
             return board[pathBoard[positionBoard[figureNum]]];
         }
+
         // Proverka dali ima slobodni potezi (za next player kopceto) slicna kako  moveFigure samo sto ne ja pomestuva figurata
         public bool CheckValidMoves(int kocka, int figureNum)
         {
